@@ -8,6 +8,7 @@ move:
 	@cp -r config/* ~/.config/ 
 	@cd tmux/ && ls tmux* | grep -v .md | xargs -I{} cp {} ~/.{}
 	@cp -r scripts/* ~/.local/scripts
+	@cd zsh/ && ls zsh* | xargs -I{} cp {} ~/.{}
 
 install-fzf:
 	@sudo apt-get install fzf -y

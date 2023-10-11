@@ -1,0 +1,5 @@
+# Self Configuration
+export PATH=$PATH:$HOME/.local/bin:$HOME/.local/scripts
+
+# Bind Tmux sessionizer to Ctrl-f when out of tmux
+bindkey -s ^f "$HOME/.local/scripts/tmux-sessionizer.sh\n"
