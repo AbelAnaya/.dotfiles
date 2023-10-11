@@ -1,10 +1,10 @@
 default: all
 
-all: move
+all: uninstall move
 
 move:
 	@cp -r .config/* ~/.config/ 
 
 uninstall:
-	@rm -rf ~/.config/nivm 
-	@rm -rf ~/.local/share/nivm 
+	@rm -rf ~/.config/nvim 
+	@rm -rf ~/.local/share/nvim 
