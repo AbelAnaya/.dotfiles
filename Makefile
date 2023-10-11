@@ -4,6 +4,7 @@ all: uninstall move
 
 move:
 	@cp -r .config/* ~/.config/ 
+	@cp .tmux.conf ~/
 
 nvim:
 	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
