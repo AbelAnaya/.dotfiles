@@ -18,6 +18,11 @@ Kickstart.nvim targets *only* the latest ['stable'](https://github.com/neovim/ne
 Distribution Alternatives:
 - [LazyVim](https://www.lazyvim.org/): A delightful distribution maintained by @folke (the author of lazy.nvim, the package manager used here)
 
+
+### MobaXterm configuration
+
+Use HackNerd Font Mono as terminal emulator font and xterm-256 color as terminal type
+
 ### Installation
 
 * Backup your previous configuration (if any exists)
