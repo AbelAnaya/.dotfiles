@@ -57,6 +57,8 @@ require('lazy').setup({
     },
   },
 
+  { "christoomey/vim-tmux-navigator" },
+
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
@@ -124,7 +126,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'tokyonight-night',
+        theme = 'tokyonight',
         component_separators = { left = '', right = ''},
         section_separators = { left = '', right = ''},
       },
