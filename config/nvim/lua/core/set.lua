@@ -4,8 +4,9 @@
 -- Set Ruler, TextWidth and indentation configuration
 vim.opt.textwidth = 119
 vim.opt.colorcolumn = {120}
-vim.opt.breakindent = true
-vim.opt.linebreak = true
+
+-- Disable wrapping
+vim.opt.wrap = false
 
 -- Set relative number
 vim.opt.nu = true
@@ -24,13 +25,20 @@ vim.opt.expandtab = true
 -- Configure vim smart indent
 vim.opt.smartindent = true
 
--- Disable wrapping
-vim.opt.wrap = false
-
 -- Set highlight on search
 vim.o.hlsearch = true
+vim.o.incsearch = true
 
--- Enable mouse mode
+-- Set termguicolors for better colors in nvim
+vim.o.termguicolors = true
+
+-- Add scroll buffer of 8 lines (means that going down will ensure 8 lines are maintained at the botttom form cursor)
+vim.o.scrolloff = 8
+
+-- Keep signcolumn on by default
+vim.o.signcolumn = 'yes'
+
+-- Enable mouse mode in all vim modes
 vim.o.mouse = 'a'
 
 -- Sync clipboard between OS and Neovim.
@@ -38,22 +46,20 @@ vim.o.mouse = 'a'
 --  See `:help 'clipboard'`
 vim.o.clipboard = 'unnamedplus'
 
--- Save undo history
+-- Disable backup and swapfile and enable long history for undo tree plugin
+vim.o.swapfile = false
+vim.o.backup = false
+vim.o.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.o.undofile = true
 
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
--- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
-
 -- Decrease update time
-vim.o.updatetime = 250
+vim.o.updatetime = 50
 vim.o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
--- Set termguicolors for better colors in nvim
-vim.o.termguicolors = true
