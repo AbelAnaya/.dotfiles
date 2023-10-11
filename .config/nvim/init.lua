@@ -162,6 +162,126 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
+  {
+    "ThePrimeagen/harpoon",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      -- set keymaps
+      local keymap = vim.keymap -- for conciseness
+
+      keymap.set(
+        "n",
+        "<leader>hm",
+        "<cmd>lua require('harpoon.mark').add_file()<cr>",
+        { desc = "Mark file with harpoon" }
+      )
+      keymap.set("n", "<leader>hn", "<cmd>lua require('harpoon.ui').nav_next()<cr>", { desc = "Go to next harpoon mark" })
+      keymap.set(
+        "n",
+        "<leader>hp",
+        "<cmd>lua require('harpoon.ui').nav_prev()<cr>",
+        { desc = "Go to previous harpoon mark" }
+      )
+    end,
+  },
+
+  {
+    "goolord/alpha-nvim",
+    event = "VimEnter",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      local alpha = require("alpha")
+      local dashboard = require("alpha.themes.dashboard")
+
+      -- Set header
+      dashboard.section.header.val = {
+        "                                                     ",
+        "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
+        "  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
+        "  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
+        "  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
+        "  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
+        "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
+        "                                                     ",
+      }
+
+      -- Set menu
+      dashboard.section.buttons.val = {
+        dashboard.button("e", "  > New File", "<cmd>ene<CR>"),
+        dashboard.button("SPC ee", "  > Toggle file explorer", "<cmd>NvimTreeToggle<CR>"),
+        dashboard.button("SPC ff", "󰱼 > Find File", "<cmd>Telescope find_files<CR>"),
+        dashboard.button("SPC fs", "  > Find Word", "<cmd>Telescope live_grep<CR>"),
+        dashboard.button("SPC wr", "󰁯  > Restore Session For Current Directory", "<cmd>SessionRestore<CR>"),
+        dashboard.button("q", " > Quit NVIM", "<cmd>qa<CR>"),
+      }
+
+      -- Send config to alpha
+      alpha.setup(dashboard.opts)
+
+      -- Disable folding on alpha buffer
+      vim.cmd([[autocmd FileType alpha setlocal nofoldenable]])
+    end,
+  },
+
+  {
+    "nvim-tree/nvim-tree.lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      local nvimtree = require("nvim-tree")
+
+      -- recommended settings from nvim-tree documentation
+      vim.g.loaded_netrw = 1
+      vim.g.loaded_netrwPlugin = 1
+
+      -- change color for arrows in tree to light blue
+      vim.cmd([[ highlight NvimTreeIndentMarker guifg=#3FC5FF ]])
+
+      -- configure nvim-tree
+      nvimtree.setup({
+        view = {
+          width = 45,
+        },
+        -- change folder arrow icons
+        renderer = {
+          icons = {
+            glyphs = {
+              folder = {
+                arrow_closed = "", -- arrow when folder is closed
+                arrow_open = "", -- arrow when folder is open
+              },
+            },
+          },
+        },
+        -- disable window_picker for
+        -- explorer to work well with
+        -- window splits
+        actions = {
+          open_file = {
+            window_picker = {
+              enable = false,
+            },
+          },
+        },
+        filters = {
+          custom = { ".DS_Store" },
+        },
+        git = {
+          ignore = false,
+        },
+      })
+
+      -- set keymaps
+      local keymap = vim.keymap -- for conciseness
+
+      keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
+      keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" }) -- toggle file explorer on current file
+      keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
+      keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
+    end,
+  },
+
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
