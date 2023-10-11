@@ -1,5 +1,5 @@
 --  Load editor/editor.lua configuration
-require('texteditor')
+require('core/texteditor')
 
 -- Set <space> as the leader key
 -- See `:help mapleader`
