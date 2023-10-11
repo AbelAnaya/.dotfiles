@@ -5,9 +5,9 @@ all: uninstall move
 install: install-nvim install-tmux-tpm install-fzf
 
 move:
-	@cp -r .config/* ~/.config/ 
+	@cp -r config/* ~/.config/ 
 	@cp -r tmux/.tmux* ~/
-	@cp -r bin/.local/* ~/.local/
+	@cp -r scripts/* ~/.local/scripts
 
 install-fzf:
 	@sudo apt-get install fzf -y
@@ -23,3 +23,5 @@ install-tmux-tpm:
 uninstall:
 	@rm -rf ~/.config/nvim 
 	@rm -rf ~/.local/share/nvim 
+	@rm -rf ~/.tmux/
+	@rm -rf ~/.tmux*
