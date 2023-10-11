@@ -1,8 +1,6 @@
 return {
   "ThePrimeagen/harpoon",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-  },
+  dependencies = { "nvim-lua/plenary.nvim" },
   config = function()
     -- set keymaps
     local mark = require("harpoon.mark")
