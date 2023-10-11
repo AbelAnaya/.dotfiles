@@ -96,20 +96,26 @@ require('lazy').setup({
   },
 
   {
+    "rebelot/kanagawa.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
+
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+
+  {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
     opts = {},
   },
 
-  -- {
-  --   -- Theme inspired by Atom
-  --   'navarasu/onedark.nvim',
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd.colorscheme 'onedark'
-  --   end,
-  -- },
+  {
+    -- Theme inspired by Atom
+    'navarasu/onedark.nvim',
+    priority = 1000,
+  },
 
   {
     -- Set lualine as statusline
@@ -118,7 +124,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'onedark',
+        theme = 'tokyonight-night',
         component_separators = { left = '', right = ''},
         section_separators = { left = '', right = ''},
       },
@@ -614,7 +620,7 @@ cmp.setup {
   },
 }
 
-vim.cmd([[colorscheme tokyonight-storm]])
+vim.cmd("colorscheme tokyonight-night")
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
