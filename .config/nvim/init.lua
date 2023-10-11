@@ -624,5 +624,11 @@ cmp.setup {
 
 vim.cmd("colorscheme tokyonight-night")
 
+vim.g.tmux_navigator_no_mappings = 1
+vim.cmd("noremap <silent> <c-Left> :<C-U>TmuxNavigateLeft<cr>")
+vim.cmd("noremap <silent> <c-Right> :<C-U>TmuxNavigateRight<cr>")
+vim.cmd("noremap <silent> <c-Down> :<C-U>TmuxNavigateDown<cr>")
+vim.cmd("noremap <silent> <c-Up> :<C-U>TmuxNavigateUp<cr>")
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
