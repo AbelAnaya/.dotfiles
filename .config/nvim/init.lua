@@ -110,10 +110,10 @@ require('lazy').setup({
     -- See `:help lualine.txt`
     opts = {
       options = {
-        icons_enabled = false,
+        icons_enabled = true,
         theme = 'onedark',
-        component_separators = '|',
-        section_separators = '',
+        component_separators = { left = '', right = ''},
+        section_separators = { left = '', right = ''},
       },
     },
   },
@@ -211,8 +211,8 @@ require('lazy').setup({
       dashboard.section.buttons.val = {
         dashboard.button("e", "  > New File", "<cmd>ene<CR>"),
         dashboard.button("SPC ee", "  > Toggle file explorer", "<cmd>NvimTreeToggle<CR>"),
-        dashboard.button("SPC ff", "󰱼 > Find File", "<cmd>Telescope find_files<CR>"),
-        dashboard.button("SPC fs", "  > Find Word", "<cmd>Telescope live_grep<CR>"),
+        dashboard.button("SPC sf", "󰱼 > Find File", "<cmd>Telescope find_files<CR>"),
+        dashboard.button("SPC sg", "  > Find Word", "<cmd>Telescope live_grep<CR>"),
         dashboard.button("SPC wr", "󰁯  > Restore Session For Current Directory", "<cmd>SessionRestore<CR>"),
         dashboard.button("q", " > Quit NVIM", "<cmd>qa<CR>"),
       }

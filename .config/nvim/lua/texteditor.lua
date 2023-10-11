@@ -1,5 +1,5 @@
 -- Set Ruler, TextWidth and indentation configuration
-vim.opt.textwidth = 79
+vim.opt.textwidth = 119
 vim.opt.colorcolumn = {120}
 vim.opt.breakindent = true
 vim.opt.linebreak = true
