@@ -265,7 +265,6 @@ require('lazy').setup({
           },
         },
         filters = {
-          custom = { ".DS_Store" },
         },
         git = {
           ignore = false,
