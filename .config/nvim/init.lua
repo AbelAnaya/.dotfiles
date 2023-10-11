@@ -630,5 +630,8 @@ vim.cmd("noremap <silent> <c-Right> :<C-U>TmuxNavigateRight<cr>")
 vim.cmd("noremap <silent> <c-Down> :<C-U>TmuxNavigateDown<cr>")
 vim.cmd("noremap <silent> <c-Up> :<C-U>TmuxNavigateUp<cr>")
 
+-- Use <C-l> to switch file to prevous file instead of <C-^> (C-6)
+vim.cmd("noremap <silent> <c-l> :<C-U>bprevious<cr>")
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
