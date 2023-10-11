@@ -625,13 +625,10 @@ cmp.setup {
 vim.cmd("colorscheme tokyonight-night")
 
 vim.g.tmux_navigator_no_mappings = 1
-vim.cmd("noremap <silent> <c-Left> :<C-U>TmuxNavigateLeft<cr>")
-vim.cmd("noremap <silent> <c-Right> :<C-U>TmuxNavigateRight<cr>")
-vim.cmd("noremap <silent> <c-Down> :<C-U>TmuxNavigateDown<cr>")
-vim.cmd("noremap <silent> <c-Up> :<C-U>TmuxNavigateUp<cr>")
-
--- Use <C-Space> (C-2) to switch file to prevous file instead of <C-^> (C-6)
-vim.cmd("noremap <silent> <C-Space> :<C-U>bprevious<cr>")
+vim.cmd("noremap <silent> <s-Left> :<C-U>TmuxNavigateLeft<cr>")
+vim.cmd("noremap <silent> <s-Right> :<C-U>TmuxNavigateRight<cr>")
+vim.cmd("noremap <silent> <s-Down> :<C-U>TmuxNavigateDown<cr>")
+vim.cmd("noremap <silent> <s-Up> :<C-U>TmuxNavigateUp<cr>")
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
