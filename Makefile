@@ -2,7 +2,7 @@ default: all
 
 all: uninstall move
 
-install: install-nvim install-tpm install-fzf
+install: install-nvim install-tmux-tpm install-fzf
 
 move:
 	@cp -r .config/* ~/.config/ 
@@ -19,9 +19,6 @@ install-nvim:
 
 install-tmux-tpm:
 	@git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-install-cht-sht:
-	@git clone https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-cht.sh
 
 uninstall:
 	@rm -rf ~/.config/nvim 
