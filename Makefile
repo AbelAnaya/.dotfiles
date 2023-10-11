@@ -2,7 +2,7 @@ default: all
 
 all: uninstall move
 
-install: install-nvim install-tmux-tpm install-fzf
+install: install-nvim install-tmux-tpm install-fzf install-oh-my-zsh install-powerlevel10k
 
 move:
 	@cp -r config/* ~/.config/ 
@@ -12,6 +12,14 @@ move:
 
 install-fzf:
 	@sudo apt-get install fzf -y
+
+install-oh-my-zsh:
+	wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+	sh install.sh
+
+install-powerlevel10k:
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+	echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
 
 install-nvim:
 	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
