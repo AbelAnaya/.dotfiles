@@ -1,6 +1,6 @@
-# Dotfiles AbelAnaya
+# Dotfiles
 
-### Introduction
+## Introduction
 
 This repository collects all the configuration files and installation rules to setup a personal development
 environment (PDE).
@@ -10,7 +10,7 @@ This PDE consists in the integration of the following tools:
 - Tmux
 - Zsh (with oh-my-zsh and powerlevel10k)
 
-### Installation
+## Installation
 
 The installation of this repository is provided via Makefile rules.
 
@@ -19,9 +19,9 @@ repository.
 
 Current installation method has been tested under Ubuntu 18.04.
 
-### Useful Vim commands and workflows
+## Useful Vim commands and workflows
 
-## Search commands and quickfix
+### Search commands and quickfix
 
 Using :vimgrep :helpgrep commands in combination with quickfix command (e.g: :cwindow, :cnext, :cprev) helps to find
 patterns in files of the project (for :vimgrep) or patterns in help documentation (for :helpgrep).
@@ -48,15 +48,15 @@ Same applies for :helpgrep.
 The usage of these commands is related with quickfix commands and calling :cnext, :cprev or :cwindow applies to every
 vim command that create a quickfix list as output: vimgrep, grep, helpgrep, make.
 
-### MobaXterm configuration
+## MobaXterm configuration
 
 Use HackNerd Font Mono as terminal emulator font and xterm-256 color as terminal type
 
-### Installation
+## Installation
 
 * Backup your previous configuration (if any exists)
 
-#### Example: Adding an autopairs plugin
+### Example: Adding an autopairs plugin
 
 In the file: `lua/custom/plugins/autopairs.lua`, add:
 
@@ -83,7 +83,7 @@ return {
 
 This will automatically install [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs) and enable it on startup. For more information, see documentation for [lazy.nvim](https://github.com/folke/lazy.nvim).
 
-#### Example: Adding a file tree plugin
+### Example: Adding a file tree plugin
 
 In the file: `lua/custom/plugins/filetree.lua`, add:
 
@@ -107,7 +107,7 @@ return {
 
 This will install the tree plugin and add the command `:Neotree` for you. You can explore the documentation at [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) for more information.
 
-### Contribution
+## Contribution
 
 Pull-requests are welcome. However, since this is repository consists of a personal development environment, the
 configuration is designed to match my needs and how I like to work.
@@ -117,7 +117,7 @@ feature I will still leave the PR open as inspiration for other people.
 
 Feel free to fork this repository as a starting point for your own PDE configuration!
 
-### FAQ
+## FAQ
 
 * What should I do if I already have a pre-existing neovim configuration?
   * You should back it up, then delete all files associated with it.
