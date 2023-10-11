@@ -36,6 +36,9 @@ Examples
 - :vimgrep keymap **/*.lua -> Will search keymap string in all files ended with .lua in the current directory and  subfolders recursively
 - :vimgrep keymap ** -> Will search keymap in all files in the current directory and subfolders recursively
 
+> Note that ** glob only works if its enabled in the running shell. In zsh is enabled by default, but in bash it is
+> disabled by default. Execute `shopt -s globstar` to enable it.
+
 Once the grep command has been called a new window with the first match will appear if there is any match. We can
 iterate over the matches using :cnext, :cprev and even open a window with all the matches with :cwindow. The best part
 of this is using :cwindow to see all the matches and easily jump to any of them.
