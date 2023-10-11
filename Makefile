@@ -6,7 +6,7 @@ install: install-nvim install-tmux-tpm install-fzf
 
 move:
 	@cp -r config/* ~/.config/ 
-	@cp -r tmux/.tmux* ~/
+	@cd tmux/ && ls tmux* | grep -v .md | xargs -I{} cp {} ~/.{}
 	@cp -r scripts/* ~/.local/scripts
 
 install-fzf:
