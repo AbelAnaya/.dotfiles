@@ -27,11 +27,18 @@ Use tmux command:
 
 join-pane -t session:window. It accepts session name as string and window as both index or string
 
-## Break current pane into independent window
+### Break current pane into independent window
 
 Use tmux command:
 
 break-pane or shortcut bindkey + !
+
+### Help
+
+Check tmux manual `man tmux` for more information about default key bindings, configuration details, workflows,
+builtin commands and many other things. It is very detailed and usefull
+
+Bindkey + ? provides all the current keybinds taking into account the configured in .tmux.conf
 
 ## Useful Vim commands and workflows
 
