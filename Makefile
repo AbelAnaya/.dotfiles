@@ -40,6 +40,8 @@ install-nvim:
 	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 	@sudo chmod u+x nvim.appimage
 	@sudo mv nvim.appimage /usr/bin/nvim
+	@sudo chown root:root /usr/bin/nvim
+	@sudo chmod 755 /usr/bin/nvim
 
 install-tmux-tpm:
 	@git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
