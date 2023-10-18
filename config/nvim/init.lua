@@ -131,6 +131,7 @@ require('lazy').setup({
     'lukas-reineke/indent-blankline.nvim',
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
+    tag = "v2.20.8",
     opts = {
       space_char_blankline = ' ',
       show_end_of_line = true,
