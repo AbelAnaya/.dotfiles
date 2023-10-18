@@ -19,6 +19,20 @@ repository.
 
 Current installation method has been tested under Ubuntu 18.04.
 
+## Useful Tmux commands and worflows
+
+### Move current pane to another session/window
+
+Use tmux command:
+
+join-pane -t session:window. It accepts session name as string and window as both index or string
+
+## Break current pane into independent window
+
+Use tmux command:
+
+break-pane or shortcut bindkey + !
+
 ## Useful Vim commands and workflows
 
 ### Search commands and quickfix
