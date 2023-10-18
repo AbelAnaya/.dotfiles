@@ -7,7 +7,10 @@ all: uninstall move
 
 install: install-nvim install-tmux-tpm install-fzf install-oh-my-zsh install-powerlevel10k install-oh-my-zsh-plugins
 
-move:
+create-dirs:
+	@mkdir -p ~/.local/scripts
+
+move: create-dirs
 	@cp -r config/* ~/.config/ 
 	@cd tmux/ && ls tmux* | grep -v .md | xargs -I{} cp {} ~/.{}
 	@cp -r scripts/* ~/.local/scripts
