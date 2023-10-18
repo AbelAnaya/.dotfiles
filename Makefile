@@ -1,3 +1,6 @@
+# Variables definition
+ZSH_CUSTOM = ${HOME}/.oh-my-zsh/custom
+
 default: all
 
 all: uninstall move
@@ -11,12 +14,16 @@ move:
 	@cd zsh/ && ls zsh* | xargs -I{} cp {} ~/.{}
 	@cp zsh/p10k.zsh ~/.p10k.zsh
 
+install-fzf-clone:
+	@git clone https://github.com/junegunn/fzf.git ~/.fzf
+	~/.fzf/install
+
 install-fzf:
 	@sudo apt-get install fzf -y
 
 install-oh-my-zsh-plugins:
-	git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+	git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting
 
 install-oh-my-zsh:
 	wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
