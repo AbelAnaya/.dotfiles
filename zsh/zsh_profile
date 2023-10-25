@@ -5,7 +5,8 @@ VIM="nvim"
 
 # Personal alias
 alias ll='ls -lAFhrt'
-alias l='ls -lAFh'
+alias li='ls -lAFhrti'
+alias l='ls -lAFhrtn'
 
 # Get fzf keybindings
 source /usr/share/doc/fzf/examples/key-bindings.zsh
