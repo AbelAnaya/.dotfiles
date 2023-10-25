@@ -3,6 +3,10 @@ VIM="nvim"
 
 #PERSONAL=$XDG_CONFIG_HOME/personal
 
+# Personal alias
+alias ll='ls -lAFhrt'
+alias l='ls -lAFh'
+
 # Get fzf keybindings
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
