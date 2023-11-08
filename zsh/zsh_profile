@@ -16,7 +16,7 @@ source /usr/share/doc/fzf/examples/completion.zsh
 #source ~/.fzf/shell/key-bindings.zsh
 #source ~/.fzf/shell/completion.zsh
 
-export GIT_EDITOR=$VIM
+export GIT_EDITOR=vim
 
 # Path config
 export PATH=$PATH:$HOME/.local/bin:$HOME/.local/scripts
