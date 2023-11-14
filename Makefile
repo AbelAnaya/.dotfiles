@@ -14,7 +14,7 @@ move: create-dirs
 	@cp -r config/* ~/.config/ 
 	@cd tmux/ && ls tmux* | grep -v .md | xargs -I{} cp {} ~/.{}
 	@cp -r scripts/* ~/.local/scripts
-	@cd zsh/ && ls zsh* | xargs -I{} cp {} ~/.{}
+	@cd zsh/ && ls zsh* | grep -v project | xargs -I{} cp {} ~/.{}
 	@cp zsh/p10k.zsh ~/.p10k.zsh
 
 install-fzf-clone:
