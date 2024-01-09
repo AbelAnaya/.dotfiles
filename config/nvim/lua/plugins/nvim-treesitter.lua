@@ -52,8 +52,5 @@ return {
             },
         }
 
-        -- Enable nvim-ts-context-commentstring plugin for better comments
-        require('ts_context_commentstring').setup {}
-
     end,
 }
