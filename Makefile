@@ -5,7 +5,7 @@ default: all
 
 all: uninstall move
 
-install: install-nvim install-tmux-tpm install-fzf install-oh-my-zsh install-powerlevel10k install-oh-my-zsh-plugins
+install: install-nvim install-tmux-tpm install-fzf install-oh-my-zsh install-powerlevel10k install-oh-my-zsh-plugins install-git-alias
 
 create-dirs:
 	@mkdir -p ~/.local/scripts
@@ -44,6 +44,9 @@ install-nvim:
 
 install-tmux-tpm:
 	@git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+install-git-alias:
+	@./scripts/git_alias.sh
 
 uninstall:
 	@rm -rf ~/.config/nvim 
