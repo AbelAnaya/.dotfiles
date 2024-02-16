@@ -13,7 +13,7 @@ vim.opt.nu = true
 vim.opt.rnu = true
 
 -- Set EOL, Whitespace, Trailing, Whitespace
-vim.opt.listchars:append{eol = "¬", lead = "·", trail = "·", space = "·", tab = "<->", precedes = "<", extends = ">"}
+vim.opt.listchars:append({ eol = "↵", lead = "·", trail = "·", space = "·", tab = "→ ", precedes = "<", extends = ">" })
 vim.opt.list = true
 
 -- Configure tab size
