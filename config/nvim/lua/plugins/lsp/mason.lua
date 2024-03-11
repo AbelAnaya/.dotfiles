@@ -33,7 +33,6 @@ return {
             "lua_ls",
             "bashls",
             "html",
-            "pylyzer",
             "pyright",
           },
           -- auto-install configured servers (with lspconfig)
