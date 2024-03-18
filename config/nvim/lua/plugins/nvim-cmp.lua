@@ -22,6 +22,7 @@ return {
         local lspkind = require 'lspkind'
         require('luasnip.loaders.from_vscode').lazy_load()
         luasnip.config.setup {}
+        require("copilot_cmp").setup()
 
         cmp.setup {
           completion = {
@@ -63,6 +64,7 @@ return {
           },
           sources = {
             { name = 'nvim_lsp' }, -- nvim lsp suggestions
+            { name = 'copilot' }, -- GH Copilot
             { name = 'luasnip' }, -- snippets
             { name = 'buffer' }, -- text within current buffer
             { name = 'path' }, -- file system paths
@@ -73,6 +75,7 @@ return {
                   format = lspkind.cmp_format({
                   maxwidth = 50,
                   ellipsis_char = "...",
+                  symbol_map = { Copilot = "" },
                 }),
             },
         }
