@@ -13,4 +13,3 @@ echo "git cp: git $CP"
 git config --global alias.st "$ST"
 git config --global alias.lod "$LOD"
 git config --global alias.cp "$CP"
-
