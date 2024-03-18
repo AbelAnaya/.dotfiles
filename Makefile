@@ -5,7 +5,7 @@ default: all
 
 all: uninstall move
 
-install: install-nvim install-tmux-tpm install-fzf install-oh-my-zsh install-powerlevel10k install-oh-my-zsh-plugins install-git-alias
+install: install-prerequisites install-fonts install-nvim install-tmux-tpm install-fzf install-oh-my-zsh install-powerlevel10k install-oh-my-zsh-plugins install-git-alias
 
 create-dirs:
 	@mkdir -p ~/.local/scripts
@@ -16,6 +16,14 @@ move: create-dirs
 	@cp -r scripts/* ~/.local/scripts
 	@cd zsh/ && ls zsh* | grep -v project | xargs -I{} cp {} ~/.{}
 	@cp zsh/p10k.zsh ~/.p10k.zsh
+
+install-prerequisites:
+	@sudo apt-get install -y zsh ripgrep xclip python3-venv
+
+install-fonts:
+	@mkdir ~/.fonts
+	@cp fonts/* ~/.fonts
+	@fc-cache -fv
 
 install-fzf-clone:
 	@git clone https://github.com/junegunn/fzf.git ~/.fzf

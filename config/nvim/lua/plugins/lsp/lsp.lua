@@ -105,18 +105,6 @@ return {
         })
 
         -- configure python server
-        lspconfig["pylyzer"].setup({
-          capabilities = capabilities,
-          on_attach = on_attach,
-        })
-
-        -- configure python server
-        lspconfig["pyright"].setup({
-          capabilities = capabilities,
-          on_attach = on_attach,
-        })
-
-        -- configure python server
         lspconfig["pylsp"].setup({
           capabilities = capabilities,
           on_attach = on_attach,
