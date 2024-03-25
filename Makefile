@@ -16,6 +16,7 @@ move: create-dirs
 	@cp -r scripts/* ~/.local/scripts
 	@cd zsh/ && ls zsh* | grep -v project | xargs -I{} cp {} ~/.{}
 	@cp zsh/p10k.zsh ~/.p10k.zsh
+	@cp config/kitty/kitty.conf ~/.config/kitty/kitty.conf
 
 install-prerequisites:
 	@sudo apt-get install -y zsh ripgrep xclip python3-venv
@@ -39,6 +40,14 @@ install-oh-my-zsh-plugins:
 install-oh-my-zsh:
 	wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
 	sh install.sh
+
+install-kitty:
+	curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+	sudo ln -sf ~/.local/kitty.app/bin/kitty /usr/bin
+	sudo ln -sf ~/.local/kitty.app/bin/kitten /usr/bin
+	sudo cp ~/.local/kitty.app/share/applications/kitty* /usr/share/applications/
+	sudo sed -i "s|Icon=kitty|Icon=/home/$$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" /usr/share/applications/kitty*.desktop
+	sudo sed -i "s|Exec=kitty|Exec=/home/$$USER/.local/kitty.app/bin/kitty|g" /usr/share/applications/kitty*.desktop
 
 install-powerlevel10k:
 	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM}/themes/powerlevel10k
