@@ -17,6 +17,7 @@ move: create-dirs
 	@cd zsh/ && ls zsh* | grep -v project | xargs -I{} cp {} ~/.{}
 	@cp zsh/p10k.zsh ~/.p10k.zsh
 	@cp config/kitty/kitty.conf ~/.config/kitty/kitty.conf
+	@cp config/i3/config ~/.config/i3/config
 
 install-prerequisites:
 	@sudo apt-get install -y zsh ripgrep xclip python3-venv
@@ -40,6 +41,9 @@ install-oh-my-zsh-plugins:
 install-oh-my-zsh:
 	wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
 	sh install.sh
+
+install-i3:
+	sudo apt-get install i3 i3-wm i3lock i3lock-fancy i3status
 
 install-kitty:
 	curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
