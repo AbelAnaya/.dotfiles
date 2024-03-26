@@ -11,13 +11,15 @@ create-dirs:
 	@mkdir -p ~/.local/scripts
 
 move: create-dirs
-	@cp -r config/* ~/.config/ 
+	@cp -r nvim/ ~/.config/
+	@cp -r kitty/ ~/.config/
+	@cp -r i3/ ~/.config/
+	@sudo cp slimlock/slim.conf /etc/
+	@sudo cp slimlock/slimlock.conf /etc/
 	@cd tmux/ && ls tmux* | grep -v .md | xargs -I{} cp {} ~/.{}
 	@cp -r scripts/* ~/.local/scripts
 	@cd zsh/ && ls zsh* | grep -v project | xargs -I{} cp {} ~/.{}
 	@cp zsh/p10k.zsh ~/.p10k.zsh
-	@cp config/kitty/kitty.conf ~/.config/kitty/kitty.conf
-	@cp config/i3/config ~/.config/i3/config
 
 install-prerequisites:
 	@sudo apt-get install -y zsh ripgrep xclip python3-venv
@@ -42,8 +44,17 @@ install-oh-my-zsh:
 	wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
 	sh install.sh
 
+install-slimlock:
+	sudo apt update
+	sudo apt install slim libpam0g-dev libxrandr-dev libfreetype6-dev libimlib2-dev libxft-dev
+	git clone https://github.com/joelburget/slimlock.git ~/Downloads/slimlock
+	git clone https://github.com/adi1090x/slim_themes ~/Downloads/slim_themes
+	sudo make -C ~/Downloads/slimlock/
+	sudo make -C ~/Downloads/slimlock/ install
+	sudo cp -r ~/Downloads/slim_themes/themes/* /usr/share/slim/themes/
+
 install-i3:
-	sudo apt-get install i3 i3-wm i3lock i3lock-fancy i3status
+	sudo apt-get install i3 i3-wm i3lock i3lock-fancy i3status xautolock
 
 install-kitty:
 	curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
