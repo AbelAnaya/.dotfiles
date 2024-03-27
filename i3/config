@@ -28,12 +28,15 @@ for_window [class="^.*"] client.focused          #77dd77 #285577 #ffffff #2e9ef4
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
-exec_always --no-startup-id xset dpms 0 0 60
+exec_always --no-startup-id xset dpms 0 0 300
 exec --no-startup-id xss-lock --transfer-sleep-lock -- dm-tool switch-to-greeter
+
+# Use two screens
+exec --no-startup-id xrandr --output HDMI-1-0 --auto --left-of eDP-1
 
 
 # keybinding to lock screen
-bindsym $mod+Control+l exec slimlock
+bindsym $mod+Control+l exec dm-tool switch-to-greeter
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -247,6 +250,3 @@ bindsym $mod+Shift+comma exec ~/.config/i3/scripts/alsa restore
 bindsym $mod+semicolon exec ~/.config/i3/scripts/alsa down Headphone
 bindsym $mod+comma exec ~/.config/i3/scripts/alsa up Headphone
 bindsym $mod+m move workspace to output left
-
-# Suspend
-bindsym $mod+Shift+period exec dm-tool switch-to-greeter
