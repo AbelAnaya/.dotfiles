@@ -12,8 +12,10 @@ create-dirs:
 
 move: create-dirs
 	@cp -r nvim/ ~/.config/
+	@sudo cp -r lightdm/* /etc/lightdm/
 	@cp -r kitty/ ~/.config/
 	@cp -r i3/ ~/.config/
+	@cp -r i3status/ ~/.config/
 	@sudo cp slimlock/slim.conf /etc/
 	@sudo cp slimlock/slimlock.conf /etc/
 	@cd tmux/ && ls tmux* | grep -v .md | xargs -I{} cp {} ~/.{}
@@ -44,17 +46,18 @@ install-oh-my-zsh:
 	wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
 	sh install.sh
 
-install-slimlock:
-	sudo apt update
-	sudo apt install slim libpam0g-dev libxrandr-dev libfreetype6-dev libimlib2-dev libxft-dev
-	git clone https://github.com/joelburget/slimlock.git ~/Downloads/slimlock
-	git clone https://github.com/adi1090x/slim_themes ~/Downloads/slim_themes
-	sudo make -C ~/Downloads/slimlock/
-	sudo make -C ~/Downloads/slimlock/ install
-	sudo cp -r ~/Downloads/slim_themes/themes/* /usr/share/slim/themes/
+install-lightdm:
+	sudo apt-get install ligthdm ligthdm-gtk-greeter ligthdm-settings
+
+install-rofi:
+	sudo apt-get install rofi
+	@mkdir -p ~/.local/share/rofi/
+	@mkdir -p ~/.local/share/rofi/themes/
+	@git clone https://github.com/lr-tech/rofi-themes-collection.git ~/.local/share/rofi/themes
+	rofi-theme-selector
 
 install-i3:
-	sudo apt-get install i3 i3-wm i3lock i3lock-fancy i3status xautolock
+	sudo apt-get install i3 i3-wm i3lock i3lock-fancy i3status xss-lock
 
 install-kitty:
 	curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
