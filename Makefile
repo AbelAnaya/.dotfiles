@@ -24,7 +24,7 @@ move: create-dirs
 	@cp zsh/p10k.zsh ~/.p10k.zsh
 
 install-prerequisites:
-	@sudo apt-get install -y zsh ripgrep xclip python3-venv
+	@sudo apt-get install -y zsh ripgrep xclip python3-venv flameshot
 
 install-fonts:
 	@mkdir ~/.fonts
