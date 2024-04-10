@@ -20,6 +20,7 @@ move: create-dirs
 	@sudo cp slimlock/slimlock.conf /etc/
 	@cd tmux/ && ls tmux* | grep -v .md | xargs -I{} cp {} ~/.{}
 	@cp -r scripts/* ~/.local/scripts
+	@sudo cp -r scripts/* /usr/local/bin
 	@cd zsh/ && ls zsh* | grep -v project | xargs -I{} cp {} ~/.{}
 	@cp zsh/p10k.zsh ~/.p10k.zsh
 
