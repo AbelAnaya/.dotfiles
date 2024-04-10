@@ -84,7 +84,7 @@ install-git-alias:
 	@./scripts/git_alias.sh
 
 uninstall:
-	@rm -rf ~/.config/nvim 
-	@rm -rf ~/.local/share/nvim 
+	@rm -rf ~/.config/nvim
+	@rm -rf ~/.local/share/nvim
 	@rm -rf ~/.tmux/
 	@rm -rf ~/.tmux*

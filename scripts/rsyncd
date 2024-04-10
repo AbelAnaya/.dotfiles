@@ -1,0 +1,25 @@
+#!/bin/bash
+
+function usage()
+{
+    echo "Usage: rsyncd SRC DEST"
+}
+
+if [ $# -ne 2 ]; then
+    usage
+    exit 1
+fi
+
+SOURCE=$1
+TARGET=$2
+
+DIRECTORY_MODIFIER=
+
+if [ -d $1 ]; then
+    DIRECTORY_MODIFIER="-r"
+fi
+
+while true; do
+    inotifywait $DIRECTORY_MODIFIER -e modify,create,delete,move $1
+    rsync -avz $1 $2
+done
