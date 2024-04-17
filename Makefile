@@ -28,7 +28,7 @@ install-prerequisites:
 	@sudo apt-get install -y zsh ripgrep xclip python3-venv flameshot
 
 install-fonts:
-	@mkdir ~/.fonts
+	@mkdir -p ~/.fonts
 	@cp fonts/* ~/.fonts
 	@fc-cache -fv
 
