@@ -147,3 +147,12 @@ Feel free to fork this repository as a starting point for your own PDE configura
 * What if I want to "uninstall" this configuration:
   * `make uninstall` will delete all configuration files
 
+## Fonts installation
+
+To install more fonts simply copy the .ttf files to fonts/ and execute `make install-fonts`
+
+More fonts: https://www.nerdfonts.com/
+
+Use gucharmap utility to debug fonts icons and symbols. Go to Private User Area.
+
+See more in: https://github.com/polybar/polybar/wiki/Fonts#finding-font-names
