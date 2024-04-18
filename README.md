@@ -147,6 +147,11 @@ Feel free to fork this repository as a starting point for your own PDE configura
 * What if I want to "uninstall" this configuration:
   * `make uninstall` will delete all configuration files
 
+## Polybar
+
+See format info to apply modifications:
+https://github.com/polybar/polybar/wiki/Formatting#formats
+
 ## Fonts installation
 
 To install more fonts simply copy the .ttf files to fonts/ and execute `make install-fonts`
