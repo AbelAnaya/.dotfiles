@@ -15,12 +15,14 @@ set $mod Mod4
 # is used in the bar {} block below.
 font pango:HackNerd Font Mono 15px
 
+# class                 border  bground text    indicator child_border
+client.focused          #83A8EC #12121F #D4D7FF #83A8EC   #83A8EC
+client.urgent           #DE688A #DA587D #D4D7FF #D0D3FF   #DA587D
+
 # GET DEM BORDERS OUT OF HEREc:w
 #
 # Thanks Childz
-for_window [class="^.*"] border pixel 2
-                          # class                 border  backgr. text    indicator child_border
-for_window [class="^.*"] client.focused          #77dd77 #285577 #ffffff #2e9ef4   #285577
+for_window [class="^.*"] border pixel 1
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -37,6 +39,18 @@ exec --no-startup-id /usr/libexec/gsd-xsettings
 # Use two screens
 exec --no-startup-id xrandr --output HDMI-1-0 --auto --left-of eDP-1
 
+# Use dunst as notification manager
+exec --no-startup-id dunst -config "/home/$USER/.config/dunst/dunstrc"
+
+# Use polybar
+exec_always --no-startup-id $HOME/.config/polybar/scripts/launch.sh
+
+# feh wallpaper
+# TODO: Use nitrogen instead
+exec feh --bg-fill ~/.dotfiles/images/background.jpg
+
+# Autotiling. Install with pip install autitiling
+exec_always --no-startup-id autotiling
 
 # keybinding to lock screen
 bindsym $mod+Control+l exec dm-tool switch-to-greeter
@@ -69,8 +83,8 @@ bindsym $mod+Return exec kitty
 # bindsym $mod+space exec "/home/theprimeagen/dotfiles/awesome-streamerrc/ThePrimeagen/tmux2"
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id rofi -show run -matching fuzzy
+# start rofi (a program launcher)
+bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons -matching fuzzy
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -111,7 +125,7 @@ bindsym $mod+z split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+m fullscreen toggle
 
 # Take screenshot to clipboard
 bindsym $mod+Shift+s exec flameshot gui
@@ -128,7 +142,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+f focus child
 
 # # switch to workspace
 bindsym $mod+1 workspace 1
@@ -153,49 +167,6 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
-
-# NOTE: This is some real tom fooliery with my keyboard layout
-#  ZMK will send a shift mod with the items that require a shift key on a
-#  regular keyboard.  so though it defines a keycode as "LEFT_BRACE" it really
-#  is shift_L + LEFT_BRACE.  So you will notice the odd peppering of shifts and
-#  non shifts
-# switch to workspace
-# bindsym $mod+Shift+plus workspace 1
-# bindsym $mod+bracketleft workspace 2
-# bindsym $mod+Shift+braceleft workspace 3
-# bindsym $mod+Shift+parenleft workspace 4
-# bindsym $mod+Shift+ampersand workspace 5
-# bindsym $mod+equal workspace 6
-# bindsym $mod+Shift+parenright workspace 7
-# bindsym $mod+Shift+braceright workspace 8
-# bindsym $mod+bracketright workspace 9
-# bindsym $mod+Shift+asterisk workspace 10
-#
-# # NOTE: since i have to press shift to get these symbols
-# # move focused container to workspace.
-# #  I wanted to use this as my method of moving spaces around, but it doesn't
-# #  seem to work, but when i provide the keycode + shift it seems to work well.
-# # bindsym $mod+Shift+kp_1 move container to workspace 1
-# # bindsym $mod+Shift+kp_2 move container to workspace 2
-# # bindsym $mod+Shift+kp_3 move container to workspace 3
-# # bindsym $mod+Shift+kp_4 move container to workspace 4
-# # bindsym $mod+Shift+kp_5 move container to workspace 5
-# # bindsym $mod+Shift+kp_6 move container to workspace 6
-# # bindsym $mod+Shift+kp_7 move container to workspace 7
-# # bindsym $mod+Shift+kp_8 move container to workspace 8
-# # bindsym $mod+Shift+kp_9 move container to workspace 9
-# # bindsym $mod+Shift+kp_0 move container to workspace 10
-#
-# bindcode $mod+Shift+87 move container to workspace 1
-# bindcode $mod+Shift+88 move container to workspace 2
-# bindcode $mod+Shift+89 move container to workspace 3
-# bindcode $mod+Shift+83 move container to workspace 4
-# bindcode $mod+Shift+84 move container to workspace 5
-# bindcode $mod+Shift+85 move container to workspace 6
-# bindcode $mod+Shift+79 move container to workspace 7
-# bindcode $mod+Shift+80 move container to workspace 8
-# bindcode $mod+Shift+81 move container to workspace 9
-# bindcode $mod+Shift+90 move container to workspace 10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -230,12 +201,13 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-        status_command i3status
-        tray_output primary
-}
+# Gaps and borders
+default_border none
+default_floating_border none
+smart_borders on
+gaps inner 8
+gaps outer 1
+
 
 # ------------------------------------------
 # CUSTOM KEYS START
@@ -255,4 +227,41 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 bindsym $mod+Shift+comma exec ~/.config/i3/scripts/alsa restore
 bindsym $mod+semicolon exec ~/.config/i3/scripts/alsa down Headphone
 bindsym $mod+comma exec ~/.config/i3/scripts/alsa up Headphone
-bindsym $mod+m move workspace to output left
+
+# Gap size increase/decrease bind mode
+set $mode_gaps Gaps
+bindsym $mod+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+    bindsym Up gaps inner current plus 5
+    bindsym Down gaps inner current minus 5
+
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+
+# Open specific applications in floating (+ sticky) mode
+for_window [class = "rofi"] floating enable sticky enable
+for_window [class = "Gpick"] floating enable
+for_window [class = "Indicator-stickynotes"] floating enable
+for_window [class = "matplotlib"] floating enable
+for_window [class = "Matplotlib"] floating enable
+for_window [class = "Colorgrab"] floating enable
+
+# Move certain apps to specific workspaces
+# for_window [class = "Brave"] move window to workspace number 2
+for_window [class = "Pcmanfm"] move window to workspace number 3
+for_window [class = "Telegram"] move window to workspace number 4
+for_window [class = "libreoffice"] move window to workspace number 5
+for_window [class = "zoom"] move window to workspace number 7
+
+# Make the currently focused window a scratchpad
+bindsym $mod+ctrl+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
+# Programs
+exec_always pkill -9 polybar ; polybar main
+exec_always killall picom ; picom -b
+exec --no-startup-id alacritty -e tmux
