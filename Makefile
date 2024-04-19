@@ -15,9 +15,6 @@ move: create-dirs
 	@sudo cp -r lightdm/* /etc/lightdm/
 	@cp -r kitty/ ~/.config/
 	@cp -r i3/ ~/.config/
-	@cp -r i3status/ ~/.config/
-	@sudo cp slimlock/slim.conf /etc/
-	@sudo cp slimlock/slimlock.conf /etc/
 	@cd tmux/ && ls tmux* | grep -v .md | xargs -I{} cp {} ~/.{}
 	@cp -r scripts/* ~/.local/scripts
 	@sudo cp -r scripts/* /usr/local/bin
@@ -58,7 +55,7 @@ install-rofi:
 	rofi-theme-selector
 
 install-i3:
-	sudo apt-get install i3 i3-wm i3lock i3lock-fancy i3status xss-lock
+	sudo apt-get install i3 i3-wm i3lock i3lock-fancy xss-lock
 	sudo pip install autotiling
 
 install-kitty:

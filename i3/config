@@ -138,7 +138,7 @@ bindsym $mod+p move workspace to output right
 bindsym $mod+z split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+minus split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+m fullscreen toggle
@@ -147,10 +147,10 @@ bindsym $mod+m fullscreen toggle
 bindsym $mod+Shift+s exec flameshot gui
 
 # Make the currently focused window a scratchpad
-bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+Shift+comma move scratchpad
 
 # Show the first scratchpad window
-bindsym $mod+minus scratchpad show
+bindsym $mod+comma scratchpad show
 
 # Resize to a presentation mode
 bindsym $mod+Shift+p floating toggle; resize set 1285 960; move position 40px 80px
