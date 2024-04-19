@@ -59,6 +59,7 @@ install-rofi:
 
 install-i3:
 	sudo apt-get install i3 i3-wm i3lock i3lock-fancy i3status xss-lock
+	sudo pip install autotiling
 
 install-kitty:
 	curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
