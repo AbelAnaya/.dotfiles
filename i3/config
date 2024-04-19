@@ -30,14 +30,17 @@ for_window [class="^.*"] border pixel 1
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
-exec_always --no-startup-id xset dpms 0 0 1800
+exec_always --no-startup-id xset dpms 0 0 0
 exec --no-startup-id xss-lock --transfer-sleep-lock -- dm-tool switch-to-greeter
 
 # Load GNOME settings
 exec --no-startup-id /usr/libexec/gsd-xsettings
 
 # Use two screens
-exec --no-startup-id xrandr --output HDMI-1-0 --auto --left-of eDP-1
+exec --no-startup-id xrandr --output HDMI-1-0 --auto --left-of eDP-1 --mode 1920x1080
+
+# Set screen saver after 320 seconds
+exec_always xset s 320
 
 # Use dunst as notification manager
 exec --no-startup-id dunst -config "/home/$USER/.config/dunst/dunstrc"
@@ -45,26 +48,32 @@ exec --no-startup-id dunst -config "/home/$USER/.config/dunst/dunstrc"
 # Use polybar
 exec_always --no-startup-id $HOME/.config/polybar/scripts/launch.sh
 
-# feh wallpaper
-# TODO: Use nitrogen instead
-exec feh --bg-fill ~/.dotfiles/images/background.jpg
+# Nitrogen
+exec --no-startup-id nitrogen --restore
 
 # Autotiling. Install with pip install autitiling
 exec_always --no-startup-id autotiling
 
 # keybinding to lock screen
-bindsym $mod+Control+l exec dm-tool switch-to-greeter
+bindsym $mod+Shift+x exec dm-tool switch-to-greeter
+
+# Audio Daemons
+exec systemctl --user enable pulseaudio
+exec systemctl --user start pulseaudio
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && $refresh_i3status #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && $refresh_i3status #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && $refresh_i3status # mute sound
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 0 toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 0 toggle # mute mic
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -83,8 +92,15 @@ bindsym $mod+Return exec kitty
 # bindsym $mod+space exec "/home/theprimeagen/dotfiles/awesome-streamerrc/ThePrimeagen/tmux2"
 bindsym $mod+Shift+q kill
 
+###########################
+#      ROFI's             #
+###########################
+
 # start rofi (a program launcher)
 bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons -matching fuzzy
+
+# start rofi window
+bindsym $mod+Tab exec --no-startup-id "rofi -show window -theme-str 'window {width: 50%;}'"
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -130,6 +146,15 @@ bindsym $mod+m fullscreen toggle
 # Take screenshot to clipboard
 bindsym $mod+Shift+s exec flameshot gui
 
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
+# Resize to a presentation mode
+bindsym $mod+Shift+p floating toggle; resize set 1285 960; move position 40px 80px
+
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
@@ -142,7 +167,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-bindsym $mod+f focus child
+bindsym $mod+c focus child
 
 # # switch to workspace
 bindsym $mod+1 workspace 1
@@ -176,92 +201,43 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+bindsym $mod+ctrl+h resize shrink width 10 px or 10 ppt
+bindsym $mod+ctrl+j resize grow height 10 px or 10 ppt
+bindsym $mod+ctrl+k resize shrink height 10 px or 10 ppt
+bindsym $mod+ctrl+l resize grow width 10 px or 10 ppt
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+# same bindings, but for the arrow keys
+bindsym $mod+ctrl+Left resize shrink width 10 px or 10 ppt
+bindsym $mod+ctrl+Down resize grow height 10 px or 10 ppt
+bindsym $mod+ctrl+Up resize shrink height 10 px or 10 ppt
+bindsym $mod+ctrl+Right resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+# Gap size increase/decrease
+bindsym $mod+ctrl+Shift+Up gaps inner current plus 5
+bindsym $mod+ctrl+Shift+Down gaps inner current minus 5
+bindsym $mod+ctrl+Shift+k gaps inner current plus 5
+bindsym $mod+ctrl+Shift+j gaps inner current minus 5
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-bindsym $mod+r mode "resize"
-
-# Gaps and borders
+# Gaps and borders default
 default_border none
 default_floating_border none
 smart_borders on
 gaps inner 8
 gaps outer 1
 
-
 # ------------------------------------------
 # CUSTOM KEYS START
 # ------------------------------------------
 
-#bindsym $mod+Shift+s exec --no-startup-id ~/dotfiles/bin/monitor
-#bindsym $mod+Shift+n exec --no-startup-id ~/dotfiles/bin/resolution
-
-# FKeys
-# Pulse Audio controls
-#
-# # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
-
-# Alsa audio controls.
-bindsym $mod+Shift+comma exec ~/.config/i3/scripts/alsa restore
-bindsym $mod+semicolon exec ~/.config/i3/scripts/alsa down Headphone
-bindsym $mod+comma exec ~/.config/i3/scripts/alsa up Headphone
-
-# Gap size increase/decrease bind mode
-set $mode_gaps Gaps
-bindsym $mod+g mode "$mode_gaps"
-
-mode "$mode_gaps" {
-    bindsym Up gaps inner current plus 5
-    bindsym Down gaps inner current minus 5
-
-    bindsym Escape mode "default"
-    bindsym Return mode "default"
-}
-
 # Open specific applications in floating (+ sticky) mode
-for_window [class = "rofi"] floating enable sticky enable
 for_window [class = "Gpick"] floating enable
-for_window [class = "Indicator-stickynotes"] floating enable
 for_window [class = "matplotlib"] floating enable
 for_window [class = "Matplotlib"] floating enable
-for_window [class = "Colorgrab"] floating enable
+for_window [class = "Pavucontrol"] floating enable, resize set 650 400, move position center
+for_window [class = "Nitrogen"] floating enable, resize set 740 512, move position center
+for_window [class = "Gnome-calendar"] floating enable, resize set 810 600, move position center
 
 # Move certain apps to specific workspaces
-# for_window [class = "Brave"] move window to workspace number 2
-for_window [class = "Pcmanfm"] move window to workspace number 3
-for_window [class = "Telegram"] move window to workspace number 4
+for_window [class = "Nautilus"] move window to workspace number 3
+for_window [class = "discord"] move window to workspace number 4
 for_window [class = "libreoffice"] move window to workspace number 5
-for_window [class = "zoom"] move window to workspace number 7
-
-# Make the currently focused window a scratchpad
-bindsym $mod+ctrl+minus move scratchpad
-
-# Show the first scratchpad window
-bindsym $mod+minus scratchpad show
-
-# Programs
-exec_always pkill -9 polybar ; polybar main
-exec_always killall picom ; picom -b
-exec --no-startup-id alacritty -e tmux
