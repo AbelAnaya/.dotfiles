@@ -20,4 +20,4 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({ { import = "plugins" }, { import = "plugins.lsp" } }, {})
 
 -- Set color scheme
-vim.cmd("colorscheme catppuccin-mocha")
+vim.cmd("colorscheme onedark_dark")
