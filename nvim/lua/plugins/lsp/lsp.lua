@@ -113,6 +113,24 @@ return {
           on_attach = on_attach,
         })
 
+        -- configure denols server
+        lspconfig["denols"].setup({
+          capabilities = capabilities,
+          on_attach = on_attach,
+        })
+
+        -- configure cssls server
+        lspconfig["cssls"].setup({
+          capabilities = capabilities,
+          on_attach = on_attach,
+        })
+
+        -- configure tailwindcss server
+        lspconfig["tailwindcss"].setup({
+          capabilities = capabilities,
+          on_attach = on_attach,
+        })
+
         -- configure python server
         lspconfig["rust_analyzer"].setup({
           capabilities = capabilities,
