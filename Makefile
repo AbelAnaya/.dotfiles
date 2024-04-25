@@ -5,7 +5,7 @@ default: all
 
 all: uninstall move
 
-install: install-prerequisites install-kitty install-nvim install-tmux-tpm install-fzf install-oh-my-zsh install-powerlevel10k install-oh-my-zsh-plugins install-git-alias
+install: install-prerequisites install-kitty install-nvim install-tmux install-tmux-tpm install-fzf install-oh-my-zsh install-powerlevel10k install-oh-my-zsh-plugins install-git-alias
 
 create-dirs:
 	@sudo mkdir -p /etc/lightdm
@@ -96,6 +96,9 @@ install-nvim:
 	@sudo mv nvim.appimage /usr/bin/nvim
 	@sudo chown root:root /usr/bin/nvim
 	@sudo chmod 755 /usr/bin/nvim
+
+install-tmux:
+	@apt-get install tmux
 
 install-tmux-tpm:
 	@git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
