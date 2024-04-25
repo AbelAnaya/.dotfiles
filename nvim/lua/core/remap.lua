@@ -14,6 +14,13 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Greatest remaps ever
+vim.keymap.set({ 'x', 'v' }, "<leader>p", [["_dP]], { desc = 'Paste without modifying registers' })
+vim.keymap.set({ 'n', 'x', 'v' }, "<leader>d", [["_d]], { desc = 'Delete without modifying registers' })
+
+-- sessionizer integration in nvim remap
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer.sh<CR>")
+
 -- Set <Shift-ArrowKey> to move between Nvim Buffers and Tmux panes
 vim.g.tmux_navigator_no_mappings = 1
 vim.cmd("noremap <silent> <s-Left> :<C-U>TmuxNavigateLeft<cr>")
