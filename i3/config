@@ -37,7 +37,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- dm-tool switch-to-greeter
 exec --no-startup-id /usr/libexec/gsd-xsettings
 
 # Use two screens
-exec --no-startup-id xrandr --output HDMI-1-0 --auto --left-of eDP-1 --mode 1920x1080
+exec --no-startup-id xrandr --output HDMI-0 --auto --left-of DP-4 --mode 1920x1080
 
 # Set screen saver after 320 seconds
 exec_always xset s 320
@@ -50,6 +50,10 @@ exec_always --no-startup-id $HOME/.config/polybar/scripts/launch.sh
 
 # Nitrogen
 exec --no-startup-id nitrogen --restore
+
+# Improve touchpad experience
+exec --no-startup-id xinput set-prop "MSFT0001:01 04F3:31AD Touchpad" "libinput Tapping Enabled" 1
+exec --no-startup-id xinput set-prop "MSFT0001:01 04F3:31AD Touchpad" "libinput Natural Scrolling Enabled" 1
 
 # Autotiling. Install with pip install autitiling
 exec_always --no-startup-id autotiling
@@ -66,10 +70,10 @@ exec systemctl --user start pulseaudio
 exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 0 toggle # mute mic
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 2 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 2 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 2 toggle # mute sound
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 4 toggle # mute mic
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
