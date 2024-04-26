@@ -1,6 +1,9 @@
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+-- Use default cursor
+vim.opt.guicursor = ""
+
 -- Set Ruler, TextWidth and indentation configuration
 vim.opt.textwidth = 119
 vim.opt.colorcolumn = {120}
@@ -25,7 +28,7 @@ vim.opt.expandtab = true
 -- Configure vim smart indent
 vim.opt.smartindent = true
 
--- Set highlight on search
+-- Set highlight on search. Useful to highlight words. To clear highlight use :noh
 vim.o.hlsearch = true
 vim.o.incsearch = true
 
@@ -41,7 +44,7 @@ vim.o.signcolumn = 'yes'
 -- Enable mouse mode in all vim modes
 vim.o.mouse = 'a'
 
--- Sync clipboard between OS and Neovim.
+--  Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.o.clipboard = 'unnamedplus'
@@ -61,7 +64,7 @@ vim.o.updatetime = 50
 vim.o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+vim.o.completeopt = 'menuone,noselect,preview'
 
 -- Autocmd to remove trailing whitespaces
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
