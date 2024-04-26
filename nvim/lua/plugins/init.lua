@@ -1,11 +1,9 @@
 return {
+    { "christoomey/vim-tmux-navigator" },
 
-  -- Git related plugins
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
+    -- Useless animations
+    { "eandrju/cellular-automaton.nvim" },
 
-  { "christoomey/vim-tmux-navigator" },
-
-  -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+    -- "gc" to comment visual regions/lines
+    { 'numToStr/Comment.nvim', opts = {} },
 }
