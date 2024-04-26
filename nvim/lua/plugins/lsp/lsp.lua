@@ -56,7 +56,7 @@ return {
 
           -- See `:help K` for why this keymap
           nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-          nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+          vim.keymap.set( { 'n', 'i' }, '<C-k>', vim.lsp.buf.signature_help, { desc = 'Signature Documentation' })
 
           -- Lesser used LSP functionality
           nmap('<leader>rs', ':LspRestart<CR>', '[R]e[s]tart LSP')

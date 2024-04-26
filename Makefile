@@ -15,8 +15,10 @@ create-dirs:
 	@mkdir -p ~/.local/share/rofi/
 	@mkdir -p ~/.local/share/rofi/themes/
 
-move: create-dirs move-fonts
+move-nvim:
 	@cp -r nvim/ ~/.config/
+
+move: create-dirs move-fonts move-nvim
 	@sudo cp -r lightdm/* /etc/lightdm/
 	@cp -r kitty/ ~/.config/
 	@cp -r i3/ ~/.config/
