@@ -3,6 +3,7 @@ return {
     'hrsh7th/nvim-cmp',
     event = "InsertEnter",
     dependencies = {
+      'hrsh7th/cmp-nvim-lua', -- source for nvim lua API
       'hrsh7th/cmp-buffer', -- source for text in buffer
       'hrsh7th/cmp-path', -- source for file system paths
       -- Snippet Engine & its associated nvim-cmp source
@@ -41,7 +42,7 @@ return {
             ['<C-Space>'] = cmp.mapping.complete {},
             ['<C-e>'] = cmp.mapping.abort(),
             ['<CR>'] = cmp.mapping.confirm {
-              select = false,
+              select = true,
             },
             ['<Tab>'] = cmp.mapping(function(fallback)
               if cmp.visible() then
