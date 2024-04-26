@@ -1,9 +1,6 @@
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
--- Use default cursor
-vim.opt.guicursor = ""
-
 -- Set Ruler, TextWidth and indentation configuration
 vim.opt.textwidth = 119
 vim.opt.colorcolumn = {120}
@@ -41,12 +38,16 @@ vim.o.scrolloff = 8
 -- Keep signcolumn on by default
 vim.o.signcolumn = 'yes'
 
+-- Append files with @ in filename to recognized files
+vim.opt.isfname:append("@-@")
+
 -- Enable mouse mode in all vim modes
 vim.o.mouse = 'a'
 
 --  Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
+-- Use C-V while in insert mode or other OS window to paste yanked contents.
 vim.o.clipboard = 'unnamedplus'
 
 -- Disable backup and swapfile and enable long history for undo tree plugin
