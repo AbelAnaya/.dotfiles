@@ -12,6 +12,11 @@ return {
     lazy = false,
     priority = 1000,
     opts = {},
+    config = function()
+      require("onedarkpro").setup({
+                transparency = true
+            })
+    end,
   },
 
   { "rose-pine/neovim", name = "rose-pine", lazy = false, priority = 1000 },
