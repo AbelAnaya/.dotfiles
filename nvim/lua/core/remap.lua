@@ -45,10 +45,10 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- Improve qflist and loclist navigation
-vim.keymap.set("n", "<leader>k", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>K", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>J", "<cmd>lprev<CR>zz")
+vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+vim.keymap.set("n", "<leader>K", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<leader>J", "<cmd>cprev<CR>zz")
 
 -- Set <Shift-ArrowKey> to move between Nvim Buffers and Tmux panes
 vim.g.tmux_navigator_no_mappings = 1
@@ -61,7 +61,8 @@ vim.cmd("noremap <silent> <s-Up> :<C-U>TmuxNavigateUp<cr>")
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list as loclist' })
+vim.keymap.set('n', '<leader>Q', vim.diagnostic.setqflist, { desc = 'Open diagnostics list as qflist' })
 
 -- Center screen after jump keymaps
 vim.keymap.set('n', '<C-o>', '<C-o>zz')
