@@ -22,6 +22,8 @@ move: create-dirs move-fonts move-nvim
 	@sudo cp -r lightdm/* /etc/lightdm/
 	@cp -r kitty/ ~/.config/
 	@cp -r i3/ ~/.config/
+	@cp -r polybar/ ~/.config/
+	@cp -r rofi/ ~/.config/
 	@cd tmux/ && ls tmux* | grep -v .md | xargs -I{} cp {} ~/.{}
 	@cp -r scripts/* ~/.local/scripts
 	@sudo cp -r scripts/* /usr/local/bin
@@ -66,6 +68,7 @@ install-rofi:
 	@git clone https://github.com/lr-tech/rofi-themes-collection.git ~/.local/share/rofi/themes
 	rofi-theme-selector
 
+#Not working in Makefiles, execute directly in shell
 install-i3:
 	@/usr/lib/apt/apt-helper download-file https://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2024.03.04_all.deb keyring.deb SHA256:f9bb4340b5ce0ded29b7e014ee9ce788006e9bbfe31e96c09b2118ab91fca734
 	@sudo apt install ./keyring.deb
