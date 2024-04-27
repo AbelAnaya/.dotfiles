@@ -65,7 +65,7 @@ vim.o.updatetime = 50
 vim.o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect,preview'
+vim.o.completeopt = 'menu,menuone,noselect,preview'
 
 -- Autocmd to remove trailing whitespaces
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {

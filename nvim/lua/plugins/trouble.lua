@@ -9,7 +9,15 @@ return {
             use_diagnostic_signs = true,
         }
 
-        vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle<CR>", { silent = true, desc = "Toggle [T]rouble" })
+        vim.keymap.set("n", "<leader>tt", "<cmd>TroubleToggle<CR>", { silent = true, desc = "[T]oggle [T]rouble" })
+
+        vim.keymap.set("n", "<leader>tn", function ()
+            require("trouble").next({ skip_groups = true, jump = true })
+        end, { silent = true, desc = "[T]rouble [N]ext" })
+
+        vim.keymap.set("n", "<leader>tp", function ()
+            require("trouble").previous({ skip_groups = true, jump = true })
+        end, { silent = true, desc = "[T]rouble [P]revious" })
     end,
 
 }

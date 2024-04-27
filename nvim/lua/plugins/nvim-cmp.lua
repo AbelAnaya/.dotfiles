@@ -6,6 +6,7 @@ return {
       'hrsh7th/cmp-nvim-lua', -- source for nvim lua API
       'hrsh7th/cmp-buffer', -- source for text in buffer
       'hrsh7th/cmp-path', -- source for file system paths
+      'hrsh7th/cmp-cmdline', -- source for cmd line
       -- Snippet Engine & its associated nvim-cmp source
       'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
@@ -21,11 +22,13 @@ return {
         local cmp = require 'cmp'
         local luasnip = require 'luasnip'
         local lspkind = require 'lspkind'
+        local cmp_select = { behavior = cmp.SelectBehavior.Select }
+
         require('luasnip.loaders.from_vscode').lazy_load()
         luasnip.config.setup {}
         require("copilot_cmp").setup()
 
-        cmp.setup {
+        cmp.setup ({
           completion = {
                 completeopt = "menu,menuone,preview,noselect",
           },
@@ -38,8 +41,8 @@ return {
               documentation = cmp.config.window.bordered(),
           },
           mapping = cmp.mapping.preset.insert {
-            ['<C-n>'] = cmp.mapping.select_next_item(),
-            ['<C-p>'] = cmp.mapping.select_prev_item(),
+            ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+            ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
             ['<C-d>'] = cmp.mapping.scroll_docs(-4),
             ['<C-f>'] = cmp.mapping.scroll_docs(4),
             ['<C-Space>'] = cmp.mapping.complete {},
@@ -66,13 +69,15 @@ return {
               end
             end, { 'i', 's' }),
           },
-          sources = {
+          sources = cmp.config.sources({
             { name = 'nvim_lsp' }, -- nvim lsp suggestions
             { name = 'copilot' }, -- GH Copilot
             { name = 'luasnip' }, -- snippets
             { name = 'buffer' }, -- text within current buffer
             { name = 'path' }, -- file system paths
-          },
+            }, {
+                    { name = 'buffer' },
+                }),
 
           -- configure lspkind for vs-code like pictograms in completion menu
           formatting = {
@@ -82,7 +87,7 @@ return {
                   symbol_map = { Copilot = "" },
                 }),
             },
-        }
+        })
 
     end,
 }
