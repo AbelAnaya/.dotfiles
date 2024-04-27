@@ -1,8 +1,11 @@
 return {
     'neovim/nvim-lspconfig',
-    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      'hrsh7th/cmp-nvim-lsp',
+        'williamboman/mason.nvim',
+        'williamboman/mason-lspconfig.nvim',
+        'WhoIsSethDaniel/mason-tool-installer.nvim',
+
+        'hrsh7th/cmp-nvim-lsp',
       { 'antosha417/nvim-lsp-file-operations', config = true },
 
       -- Useful status updates for LSP
@@ -15,11 +18,40 @@ return {
 
     config = function()
 
+        -- Mason configuration
+        local mason = require("mason")
+        local mason_lspconfig = require("mason-lspconfig")
+        local mason_tool_installer = require("mason-tool-installer")
+
+        -- enable mason and configure icons
+        mason.setup({
+          ui = {
+            icons = {
+              package_installed = "✓",
+              package_pending = "➜",
+              package_uninstalled = "✗",
+            },
+          },
+        })
+
+        mason_tool_installer.setup({
+          ensure_installed = {
+            "prettier", -- prettier formatter
+            "stylua", -- lua formatter
+            "isort", -- python formatter
+            "black", -- python formatter
+            "autopep8", -- pep 8 formatter
+            "clang-format", -- c/c++ formatter
+            "pylint", -- python linter
+            "mypy", -- python linter
+            "cpplint", -- cpp linter
+            "pydocstyle", -- python doc linter
+            "markdownlint", -- markdown linter
+          },
+        })
+
         -- import lspconfig plugin
         local lspconfig = require("lspconfig")
-
-        -- import cmp-nvim-lsp plugin
-        local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
         -- [[ Configure LSP ]]
         --  This function gets run when an LSP connects to a particular buffer.
@@ -76,8 +108,12 @@ return {
         end
 
         -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-        local capabilities = vim.lsp.protocol.make_client_capabilities()
-        capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+        local cmp_lsp = require("cmp_nvim_lsp")
+        local capabilities = vim.tbl_deep_extend(
+            "force",
+            {},
+            vim.lsp.protocol.make_client_capabilities(),
+            cmp_lsp.default_capabilities())
 
         -- Change the Diagnostic symbols in the sign column (gutter)
         -- (not in youtube nvim video)
@@ -87,75 +123,52 @@ return {
             vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
         end
 
-        -- Add configuration for any LSP for desired language
-
-        -- configure bash server
-        lspconfig["bashls"].setup({
-          capabilities = capabilities,
-          on_attach = on_attach,
-        })
-
-        -- configure c/c++ server
-        lspconfig["clangd"].setup({
-          capabilities = capabilities,
-          on_attach = on_attach,
-        })
-
-        -- configure python server
-        lspconfig["html"].setup({
-          capabilities = capabilities,
-          on_attach = on_attach,
-        })
-
-        -- configure python server
-        lspconfig["pylsp"].setup({
-          capabilities = capabilities,
-          on_attach = on_attach,
-        })
-
-        -- configure denols server
-        lspconfig["denols"].setup({
-          capabilities = capabilities,
-          on_attach = on_attach,
-        })
-
-        -- configure cssls server
-        lspconfig["cssls"].setup({
-          capabilities = capabilities,
-          on_attach = on_attach,
-        })
-
-        -- configure tailwindcss server
-        lspconfig["tailwindcss"].setup({
-          capabilities = capabilities,
-          on_attach = on_attach,
-        })
-
-        -- configure python server
-        lspconfig["rust_analyzer"].setup({
-          capabilities = capabilities,
-          on_attach = on_attach,
-        })
-
-        -- configure lua server (with special settings)
-        lspconfig["lua_ls"].setup({
-          capabilities = capabilities,
-          on_attach = on_attach,
-          settings = { -- custom settings for lua
-            Lua = {
-              -- make the language server recognize "vim" global
-              diagnostics = {
-                globals = { "vim" },
-              },
-              workspace = {
-                -- make language server aware of runtime files
-                library = {
-                  [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                  [vim.fn.stdpath("config") .. "/lua"] = true,
-                },
-              },
-            },
+        mason_lspconfig.setup({
+          -- list of servers for mason to install
+          ensure_installed = {
+            "clangd",
+            "pylsp",
+            "rust_analyzer",
+            "lua_ls",
+            "bashls",
+            "html",
+            "tailwindcss",
+            "denols",
+            "cssls"
           },
+
+
+          handlers = {
+                function(server_name) -- default lsp server
+                    require("lspconfig")[server_name].setup {
+                        capabilities = capabilities,
+                        on_attach = on_attach,
+                    }
+                end,
+
+                ["lua_ls"] = function()
+                    lspconfig.lua_ls.setup ({
+                        capabilities = capabilities,
+                        on_attach = on_attach,
+                        settings = { -- custom settings for lua
+                            Lua = {
+                                -- make the language server recognize "vim" global
+                                diagnostics = { globals = { "vim" } },
+                                workspace = {
+                                    -- make language server aware of runtime files
+                                    library = {
+                                        [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                                        [vim.fn.stdpath("config") .. "/lua"] = true,
+                                    },
+                                }
+                            }
+                        }
+                    })
+                end,
+            },
+
+          -- auto-install configured servers (with lspconfig)
+          automatic_installation = true, -- not the same as ensure_installed
         })
 
     end,
