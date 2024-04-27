@@ -5,6 +5,10 @@ return {
         -- Fugitive remaps (Git integration)
         vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 
+        -- Conflict solving
+        vim.keymap.set("n", "<leader>gh", "<cmd>diffget //2<CR>")
+        vim.keymap.set("n", "<leader>gl", "<cmd>diffget //3<CR>")
+
         local Fugitive = vim.api.nvim_create_augroup("Fugitive", {})
 
         local autocmd = vim.api.nvim_create_autocmd
