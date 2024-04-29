@@ -13,9 +13,7 @@ return {
     priority = 1000,
     opts = {},
     config = function()
-      require("onedarkpro").setup({
-                transparency = true
-            })
+      require("onedarkpro").setup()
     end,
   },
 
