@@ -132,9 +132,10 @@ return {
             "lua_ls",
             "bashls",
             "html",
+            "eslint",
             "tailwindcss",
-            "denols",
-            "cssls"
+            "tsserver",
+            "cssls",
           },
 
 
