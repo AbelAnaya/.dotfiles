@@ -33,11 +33,8 @@ for_window [class="^.*"] border pixel 1
 exec_always --no-startup-id xset dpms 0 0 0
 exec --no-startup-id xss-lock --transfer-sleep-lock -- dm-tool switch-to-greeter
 
-# Load GNOME settings
-exec --no-startup-id /usr/libexec/gsd-xsettings
-
-# Use two screens
-exec --no-startup-id xrandr --output HDMI-0 --auto --left-of DP-4 --mode 1920x1080
+# Use two screens and increase zoom of windows in laptop screen
+exec --no-startup-id xrandr --output HDMI-0 --auto --left-of DP-4 --mode 1920x1080 --output DP-4 --scale 0.75x0.75
 
 # Set screen saver after 320 seconds
 exec_always xset s 320
