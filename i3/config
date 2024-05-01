@@ -39,6 +39,9 @@ exec --no-startup-id xrandr --output HDMI-0 --auto --left-of DP-4 --mode 1920x10
 # Set screen saver after 320 seconds
 exec_always xset s 320
 
+# Use picom for animations, transparency and fades
+exec_always picom -f
+
 # Use dunst as notification manager
 exec --no-startup-id dunst -config "/home/$USER/.config/dunst/dunstrc"
 

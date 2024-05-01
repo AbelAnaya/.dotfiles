@@ -32,7 +32,7 @@ move: create-dirs move-fonts move-nvim
 	@cp -r polybar/ ~/.config/
 
 install-prerequisites:
-	@sudo apt-get install -y zsh ripgrep xclip python3 pip python3-venv flameshot curl npm fuse pavucontrol net-tools network-manager network-manager-gnome xbacklight
+	@sudo apt-get install -y zsh ripgrep xclip python3 pip python3-venv flameshot curl npm fuse pavucontrol net-tools network-manager network-manager-gnome xbacklight arandr gucharmap pactl tree
 
 install-nitrogen:
 	@sudo apt-get install nitrogen
@@ -74,7 +74,7 @@ install-i3:
 	@sudo apt install ./keyring.deb
 	echo "deb http://debian.sur5r.net/i3/ $(grep '^DISTRIB_CODENAME=' /etc/lsb-release | cut -f2 -d=) universe" | sudo tee /etc/apt/sources.list.d/sur5r-i3.list
 	@sudo apt update
-	@sudo apt install i3 i3-wm i3lock i3lock-fancy xss-lock
+	@sudo apt install i3 i3-wm i3lock i3lock-fancy xss-lock picom lxappearance gtk-chtheme lxqt-config
 	@pip install autotiling
 
 install-kitty:
