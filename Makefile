@@ -10,6 +10,7 @@ install: install-prerequisites install-kitty install-nvim install-tmux install-t
 create-dirs:
 	@sudo mkdir -p /etc/lightdm
 	@mkdir -p ~/.config/polybar
+	@mkdir -p ~/.config/dunst
 	@mkdir -p ~/.local/scripts
 	@mkdir -p ~/.fonts
 	@mkdir -p ~/.local/share/rofi/
@@ -30,6 +31,9 @@ move: create-dirs move-fonts move-nvim
 	@cd zsh/ && ls zsh* | grep -v project | xargs -I{} cp {} ~/.{}
 	@cp zsh/p10k.zsh ~/.p10k.zsh
 	@cp -r polybar/ ~/.config/
+	@cp -r dunst/ ~/.config/
+	@cp .Xresources ~/
+	@cp .gtkrc-2.0 ~/
 
 install-prerequisites:
 	@sudo apt-get install -y zsh ripgrep xclip python3 pip python3-venv flameshot curl npm fuse pavucontrol net-tools network-manager network-manager-gnome xbacklight arandr gucharmap pactl tree
