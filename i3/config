@@ -93,7 +93,6 @@ floating_modifier $mod
 bindsym $mod+Return exec kitty
 
 # kill focused window
-# bindsym $mod+space exec "/home/theprimeagen/dotfiles/awesome-streamerrc/ThePrimeagen/tmux2"
 bindsym $mod+Shift+q kill
 
 ###########################
@@ -102,6 +101,9 @@ bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
 bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons -matching fuzzy
+
+# start rofi for all commands not just desktop
+bindsym $mod+Shift+d exec --no-startup-id rofi -show run -show-icons -matching fuzzy
 
 # start rofi window
 bindsym $mod+Tab exec --no-startup-id "rofi -show window -theme-str 'window {width: 50%;}'"
@@ -198,7 +200,7 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+r reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -226,8 +228,8 @@ bindsym $mod+ctrl+Shift+j gaps inner current minus 5
 default_border none
 default_floating_border none
 smart_borders on
-gaps inner 8
-gaps outer 1
+gaps inner 5
+gaps outer 0
 
 # ------------------------------------------
 # CUSTOM KEYS START
