@@ -30,7 +30,7 @@ return {
 
         cmp.setup ({
           completion = {
-                completeopt = "menu,menuone,preview,noselect",
+                completeopt = "menu,menuone,preview",
           },
           snippet = {
             expand = function(args)
@@ -48,7 +48,7 @@ return {
             ['<C-f>'] = cmp.mapping.scroll_docs(4),
             ['<C-Space>'] = cmp.mapping.complete {},
             ['<C-e>'] = cmp.mapping.abort(),
-            ['<CR>'] = cmp.mapping.confirm {
+            ['<C-y>'] = cmp.mapping.confirm {
               select = true,
             },
             ['<Tab>'] = cmp.mapping(function(fallback)
