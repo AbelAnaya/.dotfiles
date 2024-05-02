@@ -44,6 +44,9 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 -- Search and replace current word
 vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
+-- Aerial Toggle
+vim.keymap.set("n", "<leader>dt", "<cmd>AerialToggle!<CR>", { desc = "[D]ocument [T]oggle using Aerial" })
+
 -- Improve qflist and loclist navigation
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")

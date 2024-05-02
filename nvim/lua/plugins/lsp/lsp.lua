@@ -105,6 +105,9 @@ return {
 
           nmap('<leader>fb', ':Format<CR>', '[F]ormat [B]uffer')
 
+          -- Open Aerial
+          vim.cmd([[AerialOpen!]])
+
         end
 
         -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
