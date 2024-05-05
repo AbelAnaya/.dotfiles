@@ -147,6 +147,20 @@ Feel free to fork this repository as a starting point for your own PDE configura
 * What if I want to "uninstall" this configuration:
   * `make uninstall` will delete all configuration files
 
+## Kitty
+
+### Shortcuts
+
+- Increase zoom: ctrl+shift++
+- Decrease zoom: ctrl+shift+-
+- Reset zoom: ctrl+shift+backwards
+
+- Increase opacity: ctrl+shift+a>m
+- Decrease opacity: ctrl+shift+a>l
+- Reset opacity: ctrl+shift+a>d
+
+> Opacity shortcuts are achieved by pressing ctrl+shift+a all together, release all, and then press one of [m,l,d]
+
 ## Polybar
 
 See format info to apply modifications:
