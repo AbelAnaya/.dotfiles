@@ -26,7 +26,6 @@ return {
 
         require('luasnip.loaders.from_vscode').lazy_load()
         luasnip.config.setup {}
-        require("copilot_cmp").setup()
 
         cmp.setup ({
           completion = {
@@ -51,28 +50,12 @@ return {
             ['<C-y>'] = cmp.mapping.confirm {
               select = true,
             },
-            ['<Tab>'] = cmp.mapping(function(fallback)
-              if cmp.visible() then
-                cmp.select_next_item()
-              elseif luasnip.expand_or_locally_jumpable() then
-                luasnip.expand_or_jump()
-              else
-                fallback()
-              end
-            end, { 'i', 's' }),
-            ['<S-Tab>'] = cmp.mapping(function(fallback)
-              if cmp.visible() then
-                cmp.select_prev_item()
-              elseif luasnip.locally_jumpable(-1) then
-                luasnip.jump(-1)
-              else
-                fallback()
-              end
-            end, { 'i', 's' }),
+
+            ['<Tab>'] = nil,
+            ['<S-Tab>'] = nil,
           },
           sources = cmp.config.sources({
             { name = 'nvim_lsp' }, -- nvim lsp suggestions
-            { name = 'copilot' }, -- GH Copilot
             { name = 'luasnip' }, -- snippets
             { name = 'buffer' }, -- text within current buffer
             { name = 'path' }, -- file system paths
@@ -85,7 +68,6 @@ return {
                   format = lspkind.cmp_format({
                   maxwidth = 50,
                   ellipsis_char = "...",
-                  symbol_map = { Copilot = "" },
                 }),
             },
         })
