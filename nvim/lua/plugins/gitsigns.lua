@@ -17,7 +17,7 @@ return {
         current_line_blame_formatter_opts = {
             relative_time = true,
             virt_text = true,
-            virt_text_pos = 'right_align',
+            virt_text_pos = 'eol',
             delay = 500,
         },
 
