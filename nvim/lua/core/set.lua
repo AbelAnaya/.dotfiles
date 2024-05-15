@@ -5,6 +5,9 @@
 vim.opt.textwidth = 119
 vim.opt.colorcolumn = {120}
 
+-- Disable show mode below lualine as it is already shown in lualine
+vim.opt.showmode = false
+
 -- Disable wrapping
 vim.opt.wrap = false
 
@@ -25,9 +28,10 @@ vim.opt.expandtab = true
 -- Configure vim smart indent
 vim.opt.smartindent = true
 
--- Set highlight on search. Useful to highlight words. To clear highlight use :noh
+-- Set highlight on search. Useful to highlight words. To clear highlight use :noh or <ESC> keymapped
 vim.o.hlsearch = true
 vim.o.incsearch = true
+
 
 -- Set termguicolors for better colors in nvim
 vim.o.termguicolors = true
