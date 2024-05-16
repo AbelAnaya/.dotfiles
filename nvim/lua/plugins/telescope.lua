@@ -23,7 +23,7 @@ return {
         local telescope = require('telescope')
         telescope.setup {
             defaults = {
-                mappings = { i = { ['<C-u>'] = false, ['<C-d>'] = false, }, },
+                mappings = { i = { ['<C-u>'] = false, ['<C-d>'] = false, ['<c-enter'] = 'to_fuzzy_refine' }, },
                 path_display = { "smart" },
                 dynamic_preview_title = true,
             },
