@@ -36,11 +36,11 @@ return {
 
         mason_tool_installer.setup({
           ensure_installed = {
+            "prettierd", -- prettierd increases prettier speed
             "prettier", -- prettier formatter
             "stylua", -- lua formatter
-            "isort", -- python formatter
+            "isort", -- python formatter to sort imports alphabetically
             "black", -- python formatter
-            "autopep8", -- pep 8 formatter
             "clang-format", -- c/c++ formatter
             "pylint", -- python linter
             "mypy", -- python linter

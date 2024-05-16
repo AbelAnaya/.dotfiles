@@ -18,7 +18,6 @@ return {
             "stylua", -- lua formatter
             "isort", -- python formatter
             "black", -- python formatter
-            "autopep8", -- pep 8 formatter
             "clang-format", -- c/c++ formatter
             "pylint", -- python linter
             "mypy", -- python linter
@@ -45,7 +44,6 @@ return {
             formatting.stylua, -- lua formatter
             formatting.isort,
             formatting.black,
-            formatting.autopep8,
             formatting.clang_format,
             diagnostics.pylint,
             diagnostics.mypy,
