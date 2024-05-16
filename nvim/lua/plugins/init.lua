@@ -1,6 +1,8 @@
 return {
     { "christoomey/vim-tmux-navigator" },
 
+    { "tpope/vim-sleuth" },
+
     -- Useless animations
     { "eandrju/cellular-automaton.nvim" },
 
