@@ -47,17 +47,6 @@ vim.o.hlsearch = true
 vim.o.incsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear highlight" })
 
--- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
--- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
--- is not what someone will guess without a bit more experience.
---
--- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
--- or just use <C-\><C-n> to exit terminal mode
-vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-
--- Set termguicolors for better colors in nvim
-vim.o.termguicolors = true
-
 -- Add scroll buffer of 8 lines (means that going down will ensure 8 lines are maintained at the botttom form cursor)
 vim.o.scrolloff = 8
 
@@ -143,3 +132,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	group = highlight_group,
 	pattern = "*",
 })
+
+-- Set color scheme
+vim.cmd("colorscheme onedark_vivid")
+-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
