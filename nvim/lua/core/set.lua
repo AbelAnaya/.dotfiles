@@ -8,6 +8,9 @@ vim.opt.colorcolumn = {120}
 -- Disable show mode below lualine as it is already shown in lualine
 vim.opt.showmode = false
 
+-- Set breakline
+vim.opt.breakindent = true
+
 -- Disable wrapping
 vim.opt.wrap = false
 
@@ -31,7 +34,15 @@ vim.opt.smartindent = true
 -- Set highlight on search. Useful to highlight words. To clear highlight use :noh or <ESC> keymapped
 vim.o.hlsearch = true
 vim.o.incsearch = true
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear highlight' })
 
+-- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
+-- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
+-- is not what someone will guess without a bit more experience.
+--
+-- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
+-- or just use <C-\><C-n> to exit terminal mode
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- Set termguicolors for better colors in nvim
 vim.o.termguicolors = true
@@ -41,6 +52,19 @@ vim.o.scrolloff = 8
 
 -- Keep signcolumn on by default
 vim.o.signcolumn = 'yes'
+
+-- Draw relative number column first and then signcolumn
+vim.o.statuscolumn = "%=%r%s"
+
+-- Configure how new splits would be opened
+vim.o.splitright = true
+vim.o.splitbelow = true
+
+-- Preview substitutions live as you type
+vim.o.inccommand = 'split'
+
+-- Show which line your cursor is on
+vim.opt.cursorline = true
 
 -- Append files with @ in filename to recognized files
 vim.opt.isfname:append("@-@")

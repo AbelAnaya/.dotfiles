@@ -6,6 +6,9 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Using nerd font
+vim.g.have_nerd_font = true
+
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
