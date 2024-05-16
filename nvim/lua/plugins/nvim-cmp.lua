@@ -8,7 +8,7 @@ return {
 		"hrsh7th/cmp-path", -- source for file system paths
 		"hrsh7th/cmp-cmdline", -- source for cmd line
 		-- Snippet Engine & its associated nvim-cmp source
-		"L3MON4D3/LuaSnip",
+		{ "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
 		"saadparwaiz1/cmp_luasnip",
 		"onsails/lspkind.nvim", -- vs-code like pictograms
 
@@ -22,7 +22,9 @@ return {
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
 		local lspkind = require("lspkind")
-		local cmp_select = { behavior = cmp.SelectBehavior.Select }
+		lspkind.init({})
+
+		local cmp_insert = { behavior = cmp.SelectBehavior.Insert }
 
 		require("luasnip.loaders.from_vscode").lazy_load()
 		luasnip.config.setup({})
@@ -41,23 +43,27 @@ return {
 				completion = cmp.config.window.bordered(),
 			},
 			mapping = cmp.mapping.preset.insert({
-				["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-				["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
+				["<C-n>"] = cmp.mapping.select_next_item(cmp_insert),
+				["<C-p>"] = cmp.mapping.select_prev_item(cmp_insert),
 				["<C-u>"] = cmp.mapping.scroll_docs(-4),
 				["<C-d>"] = cmp.mapping.scroll_docs(4),
 				["<C-Space>"] = cmp.mapping.complete({}),
 				["<C-e>"] = cmp.mapping.abort(),
+
 				["<C-y>"] = cmp.mapping.confirm({
+					behavior = cmp.ConfirmBehavior.Insert,
 					select = true,
 				}),
 
 				-- <c-l> will move you to the right of each of the expansion locations.
 				-- <c-h> is similar, except moving you backwards.
+				-- These help to navigate through the snippet.
 				["<C-l>"] = cmp.mapping(function()
 					if luasnip.expand_or_locally_jumpable() then
 						luasnip.expand_or_jump()
 					end
 				end, { "i", "s" }),
+
 				["<C-h>"] = cmp.mapping(function()
 					if luasnip.locally_jumpable(-1) then
 						luasnip.jump(-1)
