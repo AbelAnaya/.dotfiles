@@ -17,7 +17,11 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup({ { import = "plugins" }, { import = "plugins.lsp" } }, {})
+require("lazy").setup({ { import = "core" }, { import = "plugins" }, { import = "plugins.lsp" } }, {
+	change_detection = {
+		notify = false,
+	},
+})
 
 -- Set color scheme
 vim.cmd("colorscheme onedark_vivid")
