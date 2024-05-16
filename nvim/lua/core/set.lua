@@ -18,6 +18,9 @@ vim.opt.wrap = false
 vim.opt.nu = true
 vim.opt.rnu = true
 
+-- Append completion messages to shortmess to avoid having to hit-enter
+vim.opt.shortmess:append("c")
+
 -- Set EOL, Whitespace, Trailing, Whitespace
 vim.opt.listchars:append({
 	eol = "↵",
