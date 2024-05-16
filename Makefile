@@ -81,6 +81,12 @@ install-i3:
 	@sudo apt install i3 i3-wm i3lock i3lock-fancy xss-lock picom lxappearance gtk-chtheme lxqt-config
 	@pip install autotiling
 
+install-bat:
+	@cargo install --locked bat
+
+install-tokei:
+	@cargo install tokei
+
 install-kitty:
 	curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 	sudo ln -sf ~/.local/kitty.app/bin/kitty /usr/bin
