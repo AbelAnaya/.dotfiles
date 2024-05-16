@@ -40,6 +40,48 @@ builtin commands and many other things. It is very detailed and usefull
 
 Bindkey + ? provides all the current keybinds taking into account the configured in .tmux.conf
 
+## Lazy Nvim
+
+### lua folder
+
+The lua folder is used to store all the lua configuration files that are loaded by the init.lua file. This is a way to
+organize the configuration in a modular way. Each lua file should return a table with the following structure:
+
+```lua
+return {
+  -- List of plugins to install
+  plugins = {
+    "author/plugin",
+    "author/plugin2",
+  },
+  -- Optional dependencies
+  dependencies = {
+    "author/dependency",
+    "author/dependency2",
+  },
+  -- Configuration function
+  config = function()
+    -- Configuration code
+  end,
+}
+```
+
+The plugins list is a list of strings with the format "author/plugin". The dependencies list is a list of strings with
+the format "author/dependency". The config function is a function that will be called after the plugins are installed.
+
+The lua folder is taken as the source of the configuration and paths for lazy are relative to that folder
+
+### Plugin folder
+
+The plugin folder is used to store plugins or files that should be called after Lazy as finished loading. This is
+useful to store set or remap files that do not return a plugin table.
+
+### After folder
+
+The after folder is used to store files that should be called after the plugins are loaded. This is useful to store
+files that should be called after the plugins are loaded. For example, to set the colorscheme or to set the statusline,
+or set specific options to a language in a language specific file that is only loaded for that language.
+
 ## Useful Vim commands and workflows
 
 ### Search commands and quickfix
