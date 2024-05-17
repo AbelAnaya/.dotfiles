@@ -54,7 +54,7 @@ vim.o.scrolloff = 8
 vim.o.signcolumn = "yes"
 
 -- Draw relative number column first and then signcolumn
-vim.o.statuscolumn = "%=%r%s"
+vim.o.statuscolumn = "%=%{v:relnum?v:relnum:v:lnum}%s"
 
 -- Configure how new splits would be opened
 vim.o.splitright = true

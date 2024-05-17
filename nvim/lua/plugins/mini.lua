@@ -15,5 +15,8 @@ return {
 		-- - sd'   - [S]urround [D]elete [']quotes
 		-- - sr)'  - [S]urround [R]eplace [)] [']
 		require("mini.surround").setup()
+
+		-- Improve f and t commands by allowing to jump also between lines
+		require("mini.jump").setup()
 	end,
 }
