@@ -109,6 +109,22 @@ Use `<Ctrl-W> + Smthing ` to manage windows. E.g:
 - `<Ctrl-W> + o` Close all windows except current
 - `<Ctrl-W> + =` Equal all windows sizes
 
+### Cdo
+
+Sometimes a refactor across several files (or even lots of files) of a proect is needed.
+Vim helps with that.
+
+Steps:
+- Search for the pattern to refactor using Telescope (search_grep) and variable name, class or whatever
+- Send results to a qflist by hitting <C-q>
+- With qflists the are lots of possibilities to do things using the :c* methos: :cnext, :cprev, :cdo
+- To execute something over all the entries of the qflist use :cdo command. E.g: :cdo s/old/new/g to replace all the
+  ocurrences of old with new repeteadly in all the files of the qflist
+- Finally save all files modified with :wa
+
+> Note: You can also ask for confirmation for each modificaction during the search and replace command s/old/new/g by
+> adding letter c (stands for confirmation) at the end of the command. E.g: :cdo s/old/new/gc or also :%s/old/new/gc
+
 ### Search commands and quickfix
 
 Using :vimgrep :helpgrep commands in combination with quickfix command (e.g: :cwindow, :cnext, :cprev) helps to find

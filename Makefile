@@ -36,7 +36,7 @@ move: create-dirs move-fonts move-nvim
 	@cp .gtkrc-2.0 ~/
 
 install-prerequisites:
-	@sudo apt-get install -y zsh ripgrep xclip python3 pip python3-venv flameshot curl npm fuse pavucontrol net-tools network-manager network-manager-gnome xbacklight arandr gucharmap pactl tree
+	@sudo apt-get install -y zsh ripgrep xclip python3 pip python3-venv flameshot curl npm fuse pavucontrol net-tools network-manager network-manager-gnome xbacklight arandr gucharmap pactl tree fd-find
 
 install-nitrogen:
 	@sudo apt-get install nitrogen
