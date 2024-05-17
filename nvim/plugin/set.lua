@@ -98,10 +98,16 @@ vim.o.timeoutlen = 300
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menu,menuone,preview"
 
--- Autocmd to remove trailing whitespaces
+-- Autocmd to remove trailing whitespaces and newlines on save
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	pattern = { "*" },
-	command = [[%s/\s\+$//e]],
+	callback = function()
+		if vim.g.disable_autoformat then
+			return
+		end
+		vim.cmd(".lua MiniTrailspace.trim()")
+		vim.cmd(".lua MiniTrailspace.trim_last_lines()")
+	end,
 })
 
 -- User command to disable autoformatting
