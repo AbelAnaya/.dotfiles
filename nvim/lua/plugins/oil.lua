@@ -10,6 +10,10 @@ return {
 				"size",
 				"icon",
 			},
+			keymaps = {
+				["<C-p>"] = false,
+				["<M-p>"] = "actions.preview",
+			},
 			win_options = {
 				wrap = false,
 				signcolumn = "yes",
