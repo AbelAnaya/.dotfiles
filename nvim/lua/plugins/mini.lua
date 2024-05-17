@@ -16,6 +16,15 @@ return {
 		-- - sr)'  - [S]urround [R]eplace [)] [']
 		require("mini.surround").setup()
 
+		-- Add indentation scope guideline of current indentation level where cursor is positioned
+		require("mini.indentscope").setup({
+			draw = {
+				animation = function()
+					return 0
+				end,
+			},
+			symbol = "│",
+		})
 		-- Improve f and t commands by allowing to jump also between lines
 		require("mini.jump").setup()
 	end,
