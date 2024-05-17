@@ -84,6 +84,31 @@ or set specific options to a language in a language specific file that is only l
 
 ## Useful Vim commands and workflows
 
+### Tab management
+
+#### Create new tab
+
+`:tab new`
+
+#### Switch to next tab
+
+`<Ctrl-NextPage>`
+
+#### Switch to prev tab
+
+`<Ctrl-PrevPage>`
+
+#### Tab Close
+
+Close all open buffers in tab or: `:tabclose`
+
+### Window management
+
+Use `<Ctrl-W> + Smthing ` to manage windows. E.g:
+
+- `<Ctrl-W> + o` Close all windows except current
+- `<Ctrl-W> + =` Equal all windows sizes
+
 ### Search commands and quickfix
 
 Using :vimgrep :helpgrep commands in combination with quickfix command (e.g: :cwindow, :cnext, :cprev) helps to find
