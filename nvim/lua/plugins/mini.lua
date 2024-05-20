@@ -29,6 +29,9 @@ return {
 				end,
 			},
 			symbol = "│",
+			options = {
+				try_as_border = true,
+			},
 		})
 
 		-- Improve f and t commands by allowing to jump also between lines
