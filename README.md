@@ -42,6 +42,10 @@ Bindkey + ? provides all the current keybinds taking into account the configured
 
 ## Lazy Nvim
 
+### Debug options set
+
+Use `:verbose set option?` to retrieve the last file that modified a option of NVIM.
+
 ### lua folder
 
 The lua folder is used to store all the lua configuration files that are loaded by the init.lua file. This is a way to
