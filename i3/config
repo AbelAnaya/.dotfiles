@@ -31,7 +31,8 @@ for_window [class="^.*"] border pixel 1
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 exec_always --no-startup-id xset dpms 0 0 0
-exec --no-startup-id xss-lock --transfer-sleep-lock -- dm-tool switch-to-greeter
+exec --no-startup-id gnome-screensaver
+exec --no-startup-id xss-lock --transfer-sleep-lock -- gnome-screensaver-command -l
 
 # Use two screens and increase zoom of windows in laptop screen
 exec --no-startup-id xrandr --output HDMI-0 --auto --left-of DP-4 --mode 1920x1080 --output DP-4 --scale 0.75x0.75
@@ -59,7 +60,7 @@ exec --no-startup-id xinput set-prop "MSFT0001:01 04F3:31AD Touchpad" "libinput 
 exec_always --no-startup-id autotiling
 
 # keybinding to lock screen
-bindsym $mod+Shift+x exec dm-tool switch-to-greeter
+bindsym $mod+Shift+x exec gnome-screensaver-command -l
 
 # Audio Daemons
 exec systemctl --user enable pulseaudio

@@ -8,7 +8,6 @@ all: uninstall move
 install: install-prerequisites install-kitty install-nvim install-tmux install-tmux-tpm install-fzf install-oh-my-zsh install-powerlevel10k install-oh-my-zsh-plugins install-git-alias
 
 create-dirs:
-	@sudo mkdir -p /etc/lightdm
 	@mkdir -p ~/.config/polybar
 	@mkdir -p ~/.config/dunst
 	@mkdir -p ~/.local/scripts
@@ -20,7 +19,6 @@ move-nvim:
 	@cp -r nvim/ ~/.config/
 
 move: create-dirs move-fonts move-nvim
-	@sudo cp -r lightdm/* /etc/lightdm/
 	@cp -r kitty/ ~/.config/
 	@cp -r i3/ ~/.config/
 	@cp -r polybar/ ~/.config/
@@ -63,9 +61,6 @@ install-oh-my-zsh-plugins:
 install-oh-my-zsh:
 	wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
 	sh install.sh
-
-install-lightdm:
-	@sudo apt-get install lightdm lightdm-gtk-greeter lightdm-settings
 
 install-rofi:
 	sudo apt-get install rofi
