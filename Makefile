@@ -7,34 +7,11 @@ all: uninstall move
 
 install: install-prerequisites install-kitty install-nvim install-tmux install-tmux-tpm install-fzf install-oh-my-zsh install-powerlevel10k install-oh-my-zsh-plugins install-git-alias
 
-create-dirs:
-	@mkdir -p ~/.config/polybar
-	@mkdir -p ~/.config/dunst
-	@mkdir -p ~/.local/scripts
-	@mkdir -p ~/.fonts
-	@mkdir -p ~/.local/share/rofi/
-	@mkdir -p ~/.local/share/rofi/themes/
-
-move-nvim:
-	@cp -r nvim/ ~/.config/
-
-move: create-dirs move-fonts move-nvim
-	@cp -r kitty/ ~/.config/
-	@cp -r i3/ ~/.config/
-	@cp -r polybar/ ~/.config/
-	@cp -r rofi/ ~/.config/
-	@cd tmux/ && ls tmux* | grep -v .md | xargs -I{} cp {} ~/.{}
-	@cp -r scripts/* ~/.local/scripts
-	@sudo cp -r scripts/* /usr/local/bin
-	@cd zsh/ && ls zsh* | grep -v project | xargs -I{} cp {} ~/.{}
-	@cp zsh/p10k.zsh ~/.p10k.zsh
-	@cp -r polybar/ ~/.config/
-	@cp -r dunst/ ~/.config/
-	@cp .Xresources ~/
-	@cp .gtkrc-2.0 ~/
+install-configs:
+	./installer.sh
 
 install-prerequisites:
-	@sudo apt-get install -y zsh ripgrep xclip python3 pip python3-venv flameshot curl npm fuse pavucontrol net-tools network-manager network-manager-gnome xbacklight arandr gucharmap pactl tree fd-find
+	@sudo apt-get install -y zsh ripgrep xclip python3 pip python3-venv flameshot curl npm fuse pavucontrol net-tools network-manager network-manager-gnome xbacklight arandr gucharmap pactl tree fd-find stow
 
 install-nitrogen:
 	@sudo apt-get install nitrogen
@@ -43,8 +20,7 @@ install-polybar:
 	@sudo apt install build-essential git cmake cmake-data pkg-config python3-sphinx python3-packaging libuv1-dev libcairo2-dev libxcb1-dev libxcb-util0-dev libxcb-randr0-dev libxcb-composite0-dev python3-xcbgen xcb-proto libxcb-image0-dev libxcb-ewmh-dev libxcb-icccm4-dev libcurl4-openssl-dev libmpdclient-dev libiw-dev libpulse-dev libjsoncpp-dev libnl-genl-3-dev libcurlpp-dev libxcb-image0-dev libxcb-xkb-dev libxcb-xrm-dev libxcb-cursor-dev wireless-tools
 	@git clone https://github.com/polybar/polybar.git ~/polybar
 
-move-fonts:
-	@cp fonts/* ~/.fonts
+install-fonts:
 	@fc-cache -fv
 
 install-fzf-clone:
@@ -62,10 +38,11 @@ install-oh-my-zsh:
 	wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
 	sh install.sh
 
+install-rofi-theme-selector:
+	@git clone https://github.com/lr-tech/rofi-themes-collection.git
+
 install-rofi:
 	sudo apt-get install rofi
-	@git clone https://github.com/lr-tech/rofi-themes-collection.git ~/.local/share/rofi/themes
-	rofi-theme-selector
 
 #Not working in Makefiles, execute directly in shell
 install-i3:
@@ -117,7 +94,6 @@ install-git-alias:
 	@./scripts/git_alias.sh
 
 uninstall:
-	@rm -rf ~/.config/nvim
+	@./clean-env.sh
 	@rm -rf ~/.local/share/nvim
 	@rm -rf ~/.tmux/
-	@rm -rf ~/.tmux*
