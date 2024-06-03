@@ -20,7 +20,7 @@ return {
                 c = true,
                 java = true,
             },
-            show_success_message = true
+            show_success_message = true,
         })
     end,
 }

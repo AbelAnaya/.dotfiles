@@ -2,12 +2,12 @@ local set = vim.opt_local
 
 -- Set local settings for terminal buffers
 vim.api.nvim_create_autocmd("TermOpen", {
-	group = vim.api.nvim_create_augroup("custom-term-open", {}),
-	callback = function()
-		set.number = false
-		set.relativenumber = false
-		set.scrolloff = 0
-	end,
+    group = vim.api.nvim_create_augroup("custom-term-open", {}),
+    callback = function()
+        set.number = false
+        set.relativenumber = false
+        set.scrolloff = 0
+    end,
 })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
@@ -20,9 +20,9 @@ vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" }
 
 -- Open a terminal at the bottom of the screen with a fixed height.
 vim.keymap.set("n", "<leader>bt", function()
-	vim.cmd.new()
-	vim.cmd.wincmd("J")
-	vim.api.nvim_win_set_height(0, 12)
-	vim.wo.winfixheight = true
-	vim.cmd.term()
+    vim.cmd.new()
+    vim.cmd.wincmd("J")
+    vim.api.nvim_win_set_height(0, 12)
+    vim.wo.winfixheight = true
+    vim.cmd.term()
 end, { desc = "Open [b]ottom [t]erminal" })

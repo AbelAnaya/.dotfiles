@@ -23,13 +23,13 @@ vim.opt.shortmess:append("c")
 
 -- Set EOL, Whitespace, Trailing, Whitespace
 vim.opt.listchars:append({
-	eol = "↵",
-	lead = "·",
-	trail = "·",
-	space = "·",
-	tab = "→ ",
-	precedes = "<",
-	extends = ">",
+    eol = "↵",
+    lead = "·",
+    trail = "·",
+    space = "·",
+    tab = "→ ",
+    precedes = "<",
+    extends = ">",
 })
 vim.opt.list = true
 
@@ -100,43 +100,43 @@ vim.o.completeopt = "menu,menuone,preview"
 
 -- Autocmd to remove trailing whitespaces and newlines on save
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-	pattern = { "*" },
-	callback = function()
-		if vim.g.disable_autoformat then
-			return
-		end
-		vim.cmd(".lua MiniTrailspace.trim()")
-		vim.cmd(".lua MiniTrailspace.trim_last_lines()")
-	end,
+    pattern = { "*" },
+    callback = function()
+        if vim.g.disable_autoformat then
+            return
+        end
+        vim.cmd(".lua MiniTrailspace.trim()")
+        vim.cmd(".lua MiniTrailspace.trim_last_lines()")
+    end,
 })
 
 -- User command to disable autoformatting
 vim.api.nvim_create_user_command("FormatDisable", function()
-	vim.g.disable_autoformat = true
+    vim.g.disable_autoformat = true
 end, {
-	desc = "Disable autoformat-on-save",
-	bang = true,
+    desc = "Disable autoformat-on-save",
+    bang = true,
 })
 
 -- User command to enable autoformatting
 vim.api.nvim_create_user_command("FormatEnable", function()
-	vim.g.disable_autoformat = false
+    vim.g.disable_autoformat = false
 end, {
-	desc = "Re-enable autoformat-on-save",
+    desc = "Re-enable autoformat-on-save",
 })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
-	callback = function()
-		vim.highlight.on_yank({
-			higroup = "IncSearch",
-			timeout = 200,
-		})
-	end,
-	group = highlight_group,
-	pattern = "*",
+    callback = function()
+        vim.highlight.on_yank({
+            higroup = "IncSearch",
+            timeout = 200,
+        })
+    end,
+    group = highlight_group,
+    pattern = "*",
 })
 
 -- Set color scheme

@@ -3,11 +3,10 @@ return {
     -- Optional dependencies
     dependencies = {
         "nvim-treesitter/nvim-treesitter",
-        "nvim-tree/nvim-web-devicons"
+        "nvim-tree/nvim-web-devicons",
     },
 
     config = function()
-
         local aerial = require("aerial")
 
         require("aerial").setup({
@@ -89,11 +88,9 @@ return {
                 -- Raw indentation
                 whitespace = "  ",
             },
-
         })
 
         vim.cmd([[ hi AerialLine guifg=#e2be7d guibg=#3a404c ]])
         vim.cmd([[ hi AerialGuide guifg=#5c6370 ]])
-
     end,
 }
