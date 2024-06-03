@@ -1,0 +1,18 @@
+configuration{
+    modi: "drun,run,window,combi,ssh";
+    show-icons: true;
+    terminal: "kitty";
+    drun-display-format: "{icon} {name}";
+    location: 0;
+    disable-history: false;
+    hide-scrollbar: true;
+    display-combi: "   All ";
+    display-run: "   Run ";
+    display-drun: "   App ";
+    display-window: "   Window";
+    display-ssh: "   SSH";
+    sidebar-mode: true;
+}
+
+@theme "catpuccin-mocha.rasi"
+//@theme "rounded-nord-dark.rasi"
