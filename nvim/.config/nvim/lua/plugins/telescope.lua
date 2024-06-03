@@ -52,6 +52,8 @@ return {
 			pickers = {
 				find_files = {
 					path_display = filenameFirst,
+					hidden = true,
+					no_ignore = true,
 				},
 				git_files = {
 					path_display = filenameFirst,
@@ -101,7 +103,7 @@ return {
 		vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
 		vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 		vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
-		vim.keymap.set("n", "<leader>sp", builtin.builtin, { desc = "[S]earch selecting [T]elescope builtin" })
+		vim.keymap.set("n", "<leader>st", builtin.builtin, { desc = "[S]earch selecting [T]elescope builtin" })
 		vim.keymap.set(
 			"n",
 			"<leader>sb",
