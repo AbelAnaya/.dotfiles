@@ -21,6 +21,8 @@ return {
 
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
+    { "rebelot/kanagawa.nvim", lazy = false, priority = 1000 },
+
     { "doums/darcula", lazy = false, priority = 1000 },
 
     { "Mofiqul/vscode.nvim", lazy = false, priority = 1000 },
