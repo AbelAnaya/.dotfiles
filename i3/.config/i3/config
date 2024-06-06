@@ -110,7 +110,7 @@ bindsym $mod+Shift+d exec --no-startup-id rofi -show run -show-icons -matching f
 bindsym $mod+Tab exec --no-startup-id "rofi -show window -theme-str 'window {width: 50%;}'"
 
 # start rofi combi
-bindsym $mod+Shift+Tab exec --no-startup-id "rofi -show combi -theme-str 'window {width: 50%;}'"
+bindsym $mod+Shift+Tab exec --no-startup-id "rofi -show combi -combi-modi 'window,run,drun,combi,ssh' -modi combi -theme-str 'window {width: 50%;}'"
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
