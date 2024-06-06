@@ -248,6 +248,18 @@ Feel free to fork this repository as a starting point for your own PDE configura
 
 > Opacity shortcuts are achieved by pressing ctrl+shift+a all together, release all, and then press one of [m,l,d]
 
+### SSH Problems and weird behavior with Zsh running hosts
+
+Check [Kitty FAQ](https://sw.kovidgoyal.net/kitty/faq/#i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-or-functional-keys-like-arrow-keys-don-t-work)
+to fix the typing problem in hosts running ZSH.
+
+Basically just run first time
+```bash
+kitten ssh server
+```
+
+The following connections can be done using regular SSH and the error should be fixed
+
 ## Polybar
 
 See format info to apply modifications:
