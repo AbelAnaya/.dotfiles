@@ -2,7 +2,7 @@
 -- See `:help vim.o`
 
 -- Set Ruler, TextWidth and indentation configuration
-vim.opt.textwidth = 119
+vim.opt.textwidth = 120
 vim.opt.colorcolumn = { 120 }
 
 -- Disable show mode below lualine as it is already shown in lualine
