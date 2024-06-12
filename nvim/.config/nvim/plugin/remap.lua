@@ -41,10 +41,10 @@ vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set("n", "<leader>dt", "<cmd>AerialToggle!<CR>", { desc = "[D]ocument [T]oggle using Aerial" })
 
 -- Improve qflist and loclist navigation
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
-vim.keymap.set("n", "<leader>K", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<leader>J", "<cmd>cprev<CR>zz")
+vim.keymap.set("n", "<leader>K", "<cmd>lnext<CR>zz")
+vim.keymap.set("n", "<leader>J", "<cmd>lprev<CR>zz")
+vim.keymap.set("n", "<leader>k", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<leader>j", "<cmd>cprev<CR>zz")
 
 -- Set <Shift-ArrowKey> to move between Nvim Buffers and Tmux panes
 vim.g.tmux_navigator_no_mappings = 1
