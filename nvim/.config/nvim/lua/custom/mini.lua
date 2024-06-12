@@ -43,15 +43,17 @@ return {
         -- Add move of objects visually selected in visual mode. Move with Shift + <h,j,k,l>
         require("mini.move").setup({
             mappings = {
+                -- Move visual selection in Visual mode. <Shift> + hjkl.
                 left = "H",
                 right = "L",
                 down = "J",
                 up = "K",
 
-                line_left = "H",
-                line_right = "L",
-                line_down = "J",
-                line_up = "K",
+                -- Move current line in Normal mode. Default <Alt> + hjkl.
+                line_left = "<M-h>",
+                line_right = "<M-l>",
+                line_down = "<M-j>",
+                line_up = "<M-k>",
             },
 
             options = {
