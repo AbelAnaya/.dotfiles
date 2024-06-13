@@ -24,9 +24,7 @@ vim.opt.shortmess:append("c")
 -- Set EOL, Whitespace, Trailing, Whitespace
 vim.opt.listchars:append({
     eol = "↵",
-    lead = "·",
     trail = "·",
-    space = "·",
     tab = "→ ",
     precedes = "<",
     extends = ">",
