@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
 
+DIRECTORIES="$HOME/ $HOME/workspace"
+
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/ ~/workspace -mindepth 1 -maxdepth 1 -type d | fzf)
+    selected=$(find $DIRECTORIES -mindepth 1 -maxdepth 1 -type d 2> /dev/null)
+    selected+=$'\n'
+    selected+=$(find $DIRECTORIES -mindepth 2 -maxdepth 2 -type d -exec test -f '{}/.git' ';' -print 2> /dev/null)
+    selected=$(echo "$selected" | fzf)
 fi
 
 if [[ -z $selected ]]; then
