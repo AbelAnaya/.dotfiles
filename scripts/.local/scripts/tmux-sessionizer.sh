@@ -15,7 +15,7 @@ if [[ -z $selected ]]; then
     exit 0
 fi
 
-selected_name=$(echo "$selected" | sed "s|$HOME/||g" | tr . _)
+selected_name=$(echo "$selected" | sed "s|$HOME/||g" | sed "s|/$||g" | tr . _)
 tmux_running=$(pgrep tmux)
 
 echo "Selected: $selected"
