@@ -21,6 +21,11 @@ Current installation method has been tested under Ubuntu 18.04.
 
 ## Useful Tmux commands and worflows
 
+### Menu for Tmux pane focus plugin
+
+Type shortcut:
+C-a T
+
 ### Reset Tmux configuration
 
 ```bash
