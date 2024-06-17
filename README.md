@@ -21,6 +21,15 @@ Current installation method has been tested under Ubuntu 18.04.
 
 ## Useful Tmux commands and worflows
 
+### Reset Tmux configuration
+
+```bash
+tmux kill-session -a
+tmux kill-server
+
+# Open new session with default key bindings
+```
+
 ### Move current pane to another session/window
 
 Use tmux command:
