@@ -26,6 +26,16 @@ Current installation method has been tested under Ubuntu 18.04.
 Type shortcut:
 C-a T
 
+### Tmux Common Problems
+
+#### Tmux copying from terminal is not sending data to system clipboard
+
+Check that SSH is forwarding the X11 clipboard. Add the following line to the SSH configuration file:
+
+```bash
+X11Forwarding yes
+```
+
 ### Reset Tmux configuration
 
 ```bash
