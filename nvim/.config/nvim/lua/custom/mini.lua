@@ -27,6 +27,9 @@ return {
             },
         })
 
+        -- Improve icons shown by nvim
+        require("mini.icons").setup()
+
         -- Improve f and t commands by allowing to jump also between lines
         require("mini.jump").setup()
 
