@@ -1,6 +1,9 @@
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+-- Using nerd font
+vim.g.have_nerd_font = true
+
 -- Set Ruler, TextWidth and indentation configuration
 vim.opt.textwidth = 120
 vim.opt.colorcolumn = { 120 }
@@ -25,7 +28,9 @@ vim.opt.shortmess:append("c")
 vim.opt.listchars:append({
     eol = "↵",
     trail = "·",
-    tab = "→ ",
+    -- tab = "→ ",
+    -- space = "·",
+    -- lead = "·",
     precedes = "<",
     extends = ">",
 })
@@ -95,6 +100,17 @@ vim.o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menu,menuone,preview"
+
+-- Configure diagnostic windows
+vim.diagnostic.config({
+    virtual_text = true,
+    float = {
+        border = "rounded",
+        source = true,
+        header = "",
+        prefix = "",
+    },
+})
 
 -- Autocmd to remove trailing whitespaces and newlines on save
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {

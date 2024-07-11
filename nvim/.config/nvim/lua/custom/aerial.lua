@@ -90,6 +90,9 @@ return {
             },
         })
 
+        -- Aerial Toggle
+        vim.keymap.set("n", "<leader>dt", "<cmd>AerialToggle!<CR>", { desc = "[D]ocument [T]oggle using Aerial" })
+
         vim.cmd([[ hi AerialLine guifg=#e2be7d guibg=#3a404c ]])
         vim.cmd([[ hi AerialGuide guifg=#5c6370 ]])
     end,

@@ -1,8 +1,5 @@
 -- [[ Basic Keymaps ]]
 
--- Using nerd font
-vim.g.have_nerd_font = true
-
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
@@ -37,9 +34,6 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 -- Search and replace current word
 vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
--- Aerial Toggle
-vim.keymap.set("n", "<leader>dt", "<cmd>AerialToggle!<CR>", { desc = "[D]ocument [T]oggle using Aerial" })
-
 -- Improve qflist and loclist navigation
 vim.keymap.set("n", "<leader>K", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>J", "<cmd>lprev<CR>zz")
@@ -60,18 +54,6 @@ vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open float
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list as loclist" })
 vim.keymap.set("n", "<leader>Q", vim.diagnostic.setqflist, { desc = "Open diagnostics list as qflist" })
 
-vim.diagnostic.config({
-    virtual_text = true,
-    float = {
-        focusable = false,
-        style = "minimal",
-        border = "rounded",
-        source = "always",
-        header = "",
-        prefix = "",
-    },
-})
-
 -- Resize window keymap
 vim.keymap.set("n", "<M-h>", "<c-w>5<", { desc = "Resize window up" })
 vim.keymap.set("n", "<M-l>", "<c-w>5>", { desc = "Resize window up" })
@@ -85,3 +67,9 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
+
+-- Disable arrow keys movement
+vim.keymap.set("n", "<Up>", "<Nop>")
+vim.keymap.set("n", "<Down>", "<Nop>")
+vim.keymap.set("n", "<Right>", "<Nop>")
+vim.keymap.set("n", "<Left>", "<Nop>")
