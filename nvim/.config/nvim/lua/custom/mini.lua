@@ -14,19 +14,6 @@ return {
         -- - MiniTrailspace.trim_last_lines()
         require("mini.trailspace").setup()
 
-        -- Add indentation scope guideline of current indentation level where cursor is positioned
-        require("mini.indentscope").setup({
-            draw = {
-                animation = function()
-                    return 0
-                end,
-            },
-            symbol = "│",
-            options = {
-                try_as_border = true,
-            },
-        })
-
         -- Improve icons shown by nvim
         require("mini.icons").setup()
 
