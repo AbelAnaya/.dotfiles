@@ -29,6 +29,7 @@ vim.opt.listchars:append({
     eol = "↵",
     trail = "·",
     -- tab = "→ ",
+    tab = "  ",
     -- space = "·",
     -- lead = "·",
     precedes = "<",
