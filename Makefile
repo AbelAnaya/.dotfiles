@@ -36,6 +36,8 @@ install-fzf:
 install-oh-my-zsh-plugins:
 	git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting
+	git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM}/plugins/zsh-you-should-use
+	git clone https://github.com/MichaelAquilina/zsh-auto-notify.git ${ZSH_CUSTOM}/plugins/auto-notify
 
 install-oh-my-zsh:
 	wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
