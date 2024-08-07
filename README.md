@@ -272,6 +272,14 @@ Feel free to fork this repository as a starting point for your own PDE configura
 
 > Opacity shortcuts are achieved by pressing ctrl+shift+a all together, release all, and then press one of [m,l,d]
 
+### Kitten themes
+
+There is a utility for theme selection:
+
+``` bash
+kitten themes
+```
+
 ### SSH Problems and weird behavior with Zsh running hosts
 
 Check [Kitty FAQ](https://sw.kovidgoyal.net/kitty/faq/#i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-or-functional-keys-like-arrow-keys-don-t-work)
