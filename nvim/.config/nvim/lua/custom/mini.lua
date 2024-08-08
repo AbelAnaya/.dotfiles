@@ -17,6 +17,15 @@ return {
         -- Improve icons shown by nvim
         require("mini.icons").setup()
 
+        -- Surround functionality
+        require("mini.surround").setup()
+
+        -- Align functionality ga in visual mode to enter functionality
+        require("mini.align").setup()
+
+        -- Mini comment plugin
+        require("mini.comment").setup()
+
         -- Improve f and t commands by allowing to jump also between lines
         require("mini.jump").setup()
 
