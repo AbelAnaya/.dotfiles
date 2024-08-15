@@ -37,3 +37,7 @@ fi
 if [[ -z $DOTFILES ]]; then
     export DOTFILES=$HOME/.dotfiles
 fi
+
+function fdf {
+    fzf --preview="bat --color=always {}"
+}
