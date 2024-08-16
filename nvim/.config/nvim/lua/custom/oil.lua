@@ -12,6 +12,12 @@ return {
             },
             keymaps = {
                 ["<C-p>"] = false,
+                ["<C-s>"] = false,
+                ["<C-v>"] = {
+                    "actions.select",
+                    opts = { vertical = true },
+                    desc = "Open the entry in a vertical split",
+                },
                 ["<M-p>"] = "actions.preview",
             },
             win_options = {
