@@ -5,7 +5,7 @@ default: all
 
 all: uninstall move
 
-install: install-prerequisites install-fdfind install-kitty install-nvim install-tmux install-tmux-tpm install-fzf install-oh-my-zsh install-powerlevel10k install-oh-my-zsh-plugins install-git-alias
+install: install-prerequisites install-cargo install-bat install-tokei install-fdfind install-kitty install-nvim install-tmux install-tmux-tpm install-fzf install-oh-my-zsh install-powerlevel10k install-oh-my-zsh-plugins install-git-alias
 
 install-configs:
 	./installer.sh
@@ -64,6 +64,9 @@ install-bat:
 install-tokei:
 	@cargo install tokei
 
+install-cargo:
+	curl https://sh.rustup.rs -sSf | sh
+
 install-kitty:
 	curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 	sudo ln -sf ~/.local/kitty.app/bin/kitty /usr/bin
@@ -90,7 +93,11 @@ install-nvim:
 	@sudo chmod 755 /usr/bin/nvim
 
 install-tmux:
-	@apt-get install tmux
+	@sudo apt-get install tmux
+	@git clone https://github.com/tmux/tmux.git ~/tmux
+	@cd ~/tmux && git checkout 3.3a && sh autogen.sh && ./configure && make
+	@sudo cp ~/tmux/tmux /usr/bin/tmux
+	@rm -rf ~/tmux
 
 install-tmux-tpm:
 	@git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
