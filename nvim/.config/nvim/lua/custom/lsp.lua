@@ -40,16 +40,28 @@ return {
 
         mason_tool_installer.setup({
             ensure_installed = {
+                "bashls",
+                "clangd",
+                "cssls",
+                "html",
+                "lua_ls",
+                "eslint",
+                "standardjs",
                 "prettierd", -- prettierd increases prettier speed
                 "prettier", -- prettier formatter
-                "stylua", -- lua formatter
+                "pylsp",
+                "pydocstyle", -- python doc linter
+                "pylint", -- python linter
                 "isort", -- python formatter to sort imports alphabetically
                 "black", -- python formatter
-                "clang-format", -- c/c++ formatter
-                "pylint", -- python linter
                 "mypy", -- python linter
+                "tailwindcss",
+                "ts-standard",
+                "tsserver",
+                "rust_analyzer",
+                "stylua", -- lua formatter
+                "clang-format", -- c/c++ formatter
                 "cpplint", -- cpp linter
-                "pydocstyle", -- python doc linter
                 "markdownlint", -- markdown linter
             },
         })
@@ -170,20 +182,6 @@ return {
         end
 
         mason_lspconfig.setup({
-            -- list of servers for mason to install
-            ensure_installed = {
-                "clangd",
-                "pylsp",
-                "rust_analyzer",
-                "lua_ls",
-                "bashls",
-                "html",
-                "eslint",
-                "tailwindcss",
-                "tsserver",
-                "cssls",
-            },
-
             handlers = {
                 function(server_name) -- default lsp server
                     require("lspconfig")[server_name].setup({
