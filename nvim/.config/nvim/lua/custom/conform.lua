@@ -14,7 +14,7 @@ return { -- Autoformat
     },
     config = function()
         require("conform").setup({
-            notify_on_error = true,
+            notify_on_error = false,
             notify_no_formatters = true,
             format_on_save = function(bufnr)
                 -- Disable autoformat for certain filetypes
