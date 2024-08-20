@@ -15,7 +15,7 @@ return { -- Autoformat
     config = function()
         require("conform").setup({
             notify_on_error = false,
-            notify_no_formatters = true,
+            notify_no_formatters = false,
             format_on_save = function(bufnr)
                 -- Disable autoformat for certain filetypes
                 local disable_filetypes = { c = true, cpp = true }
@@ -32,15 +32,15 @@ return { -- Autoformat
                 python = { "isort", "black" },
                 c = { "clang-format" },
                 cpp = { "clang-format" },
-                javascript = { "prettierd", "prettier", stop_after_first = true },
-                typescript = { "prettierd", "prettier", stop_after_first = true },
-                javascriptreact = { "prettierd", "prettier", stop_after_first = true },
-                typescriptreact = { "prettierd", "prettier", stop_after_first = true },
-                css = { "prettierd", "prettier", stop_after_first = true },
-                html = { "prettierd", "prettier", stop_after_first = true },
-                json = { "prettierd", "prettier", stop_after_first = true },
-                yaml = { "prettierd", "prettier", stop_after_first = true },
-                markdown = { "prettierd", "prettier", stop_after_first = true },
+                javascript = { { "prettierd", "prettier" } },
+                typescript = { { "prettierd", "prettier" } },
+                javascriptreact = { { "prettierd", "prettier" } },
+                typescriptreact = { { "prettierd", "prettier" } },
+                css = { { "prettierd", "prettier" } },
+                html = { { "prettierd", "prettier" } },
+                json = { { "prettierd", "prettier" } },
+                yaml = { { "prettierd", "prettier" } },
+                markdown = { { "prettierd", "prettier" } },
             },
         })
 
