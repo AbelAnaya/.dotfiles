@@ -125,21 +125,6 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     end,
 })
 
--- User command to disable autoformatting
-vim.api.nvim_create_user_command("FormatDisable", function()
-    vim.g.disable_autoformat = true
-end, {
-    desc = "Disable autoformat-on-save",
-    bang = true,
-})
-
--- User command to enable autoformatting
-vim.api.nvim_create_user_command("FormatEnable", function()
-    vim.g.disable_autoformat = false
-end, {
-    desc = "Re-enable autoformat-on-save",
-})
-
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
