@@ -5,13 +5,16 @@ default: all
 
 all: uninstall move
 
-install: install-prerequisites install-cargo install-bat install-tokei install-fdfind install-kitty install-nvim install-tmux install-tmux-tpm install-fzf install-oh-my-zsh install-powerlevel10k install-oh-my-zsh-plugins install-git-alias
+install: install-prerequisites install-prettier install-cargo install-bat install-tokei install-fdfind install-kitty install-nvim install-tmux install-tmux-tpm install-fzf install-oh-my-zsh install-powerlevel10k install-oh-my-zsh-plugins install-git-alias
 
 install-configs:
 	./installer.sh
 
 install-prerequisites:
 	@sudo apt-get install -y zsh ripgrep xclip python3 pip python3-venv flameshot curl npm fuse pavucontrol net-tools network-manager network-manager-gnome xbacklight arandr gucharmap pactl tree stow
+
+install-prettier:
+	@npm install -g prettier
 
 install-fdfind:
 	@cargo install fd-find
