@@ -46,7 +46,6 @@ return {
                 "html",
                 "lua_ls",
                 "eslint",
-                "standardjs",
                 "prettierd", -- prettierd increases prettier speed
                 "prettier", -- prettier formatter
                 "pylsp",

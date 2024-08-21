@@ -10,24 +10,36 @@ return {
         lint.linters_by_ft = {
             cpp = { "cpplint" },
             javascript = { "standardjs" },
-            typescript = { "ts-standard" },
+            typescript = { "standardjs" },
             javascriptreact = { "standardjs" },
-            typescriptreact = { "ts-standard" },
+            typescriptreact = { "standardjs" },
             python = { "pylint", "pydocstyle", "mypy" },
             markdown = { "markdownlint" },
         }
 
+        local binary_name = "standard"
+
+        local cmd_string = function()
+            local local_binary = vim.fn.fnamemodify("./node_modules/.bin/" .. binary_name, ":p")
+            return vim.loop.fs_stat(local_binary) and local_binary or binary_name
+        end
+
+        -- Use always local standard
+        local standardjs = require("lint").linters.standardjs
+        standardjs.cmd = cmd_string()
+
         local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 
+        -- Lint always ignoring errors to avoid problems when linters are not locally installed
         vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
             group = lint_augroup,
             callback = function()
-                lint.try_lint()
+                lint.try_lint(nil, { ignore_errors = true})
             end,
         })
 
         vim.keymap.set("n", "<leader>l", function()
-            lint.try_lint()
+            lint.try_lint(nil, { ignore_errors = true})
         end, { desc = "Trigger linting for current file" })
     end,
 }
