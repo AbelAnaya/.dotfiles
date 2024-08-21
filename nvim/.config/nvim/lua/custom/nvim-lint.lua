@@ -25,7 +25,7 @@ return {
         end
 
         -- Use always local standard
-        local standardjs = require("lint").linters.standardjs
+        local standardjs = lint.linters.standardjs
         standardjs.cmd = cmd_string()
 
         local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
@@ -34,12 +34,12 @@ return {
         vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
             group = lint_augroup,
             callback = function()
-                lint.try_lint(nil, { ignore_errors = true})
+                lint.try_lint(nil, { ignore_errors = true })
             end,
         })
 
         vim.keymap.set("n", "<leader>l", function()
-            lint.try_lint(nil, { ignore_errors = true})
+            lint.try_lint(nil, { ignore_errors = true })
         end, { desc = "Trigger linting for current file" })
     end,
 }
