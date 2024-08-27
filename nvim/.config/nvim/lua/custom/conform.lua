@@ -19,12 +19,16 @@ return { -- Autoformat
             format_on_save = function(bufnr)
                 -- Disable autoformat for certain filetypes
                 local disable_filetypes = { c = true, cpp = true }
-                if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+                if
+                    vim.g.disable_autoformat
+                    or vim.b[bufnr].disable_autoformat
+                    or disable_filetypes[vim.bo[bufnr].filetype]
+                then
                     return
                 end
                 return {
                     timeout_ms = 1000,
-                    lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
+                    lsp_fallback = true,
                 }
             end,
             formatters_by_ft = {
