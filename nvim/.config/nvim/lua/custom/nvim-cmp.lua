@@ -85,10 +85,24 @@ return {
 
             -- configure lspkind for vs-code like pictograms in completion menu
             formatting = {
-                format = lspkind.cmp_format({
-                    maxwidth = 50,
-                    ellipsis_char = "...",
-                }),
+                fields = { "abbr", "kind", "menu" },
+                format = function(entry, item)
+                    local color_item = require("nvim-highlight-colors").format(entry, { kind = item.kind })
+                    item = lspkind.cmp_format({
+                        menu = {
+                            nvim_lsp = "[LSP]",
+                        },
+                        mode = "symbol_text",
+                        maxwidth = 50,
+                        ellipsis_char = "...",
+                        show_labelDetails = true,
+                    })(entry, item)
+                    if color_item.abbr_hl_group then
+                        item.kind_hl_group = color_item.abbr_hl_group
+                        item.kind = color_item.abbr
+                    end
+                    return item
+                end,
 
                 expandable_indicator = true,
             },
