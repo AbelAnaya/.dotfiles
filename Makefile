@@ -11,10 +11,11 @@ install-configs:
 	./installer.sh
 
 install-prerequisites:
-	@sudo apt-get install -y zsh ripgrep xclip python3 pip python3-venv flameshot curl npm fuse pavucontrol net-tools network-manager network-manager-gnome xbacklight arandr gucharmap pactl tree stow
+	@sudo apt-get install -y autotools-dev automake zsh ripgrep xclip python3 pip flameshot curl npm fuse pavucontrol net-tools network-manager network-manager-gnome xbacklight arandr gucharmap pulseaudio-utils tree stow
+	@pip3 install virtualenv
 
 install-prettier:
-	@npm install -g prettier
+	@sudo npm install -g prettier
 
 install-fdfind:
 	@cargo install fd-find
@@ -106,7 +107,7 @@ install-tmux-tpm:
 	@git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 install-git-alias:
-	@./scripts/git_alias.sh
+	@./scripts/.local/scripts/git_alias.sh
 
 uninstall:
 	@./clean-env.sh
