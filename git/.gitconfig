@@ -1,0 +1,21 @@
+[user]
+    name = AbelAnaya
+    email = abelanaya97@gmail.com
+[alias]
+    st = status
+    lod = log --oneline --graph --decorate
+    cp = cherry-pick
+[credential "https://github.com"]
+    helper =
+    helper = !/usr/bin/gh auth git-credential
+[core]
+    pager = git-delta-snap.delta
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true
+    line-numbers = true
+[merge]
+    conflictstyle = diff3
+[diff]
+    colorMoved = default
