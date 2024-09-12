@@ -19,6 +19,9 @@ source /usr/share/doc/fzf/examples/completion.zsh
 #source ~/.fzf/shell/key-bindings.zsh
 #source ~/.fzf/shell/completion.zsh
 
+# Configure Bat
+export BAT_THEME=TwoDark
+
 export GIT_EDITOR=vim
 
 # Path config
