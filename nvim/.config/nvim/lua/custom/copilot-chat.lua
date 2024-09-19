@@ -22,8 +22,14 @@ return {
             error_header = "",
             allow_insecure = true,
             mappings = {
-                submit_prompt = {
+                close = {
                     insert = "",
+                },
+                complete = {
+                    insert = "",
+                },
+                submit_prompt = {
+                    insert = "<C-s>",
                 },
                 reset = {
                     normal = "",
