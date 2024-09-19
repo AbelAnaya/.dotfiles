@@ -13,7 +13,7 @@ return {
 
         current_line_blame = true,
         current_line_blame_formatter = "    <author>, <author_time:%d/%m/%Y> - <summary>",
-        current_line_blame_formatter_opts = {
+        current_line_blame_opts = {
             relative_time = true,
             virt_text = true,
             virt_text_pos = "eol",
