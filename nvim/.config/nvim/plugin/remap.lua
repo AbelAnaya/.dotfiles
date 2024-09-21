@@ -77,3 +77,11 @@ vim.keymap.set("n", "<Left>", "<Nop>")
 -- Move word wise in insert mode using spider nvim plugin
 vim.keymap.set("i", "<C-f>", "<Esc>l<cmd>lua require('spider').motion('w')<CR>i")
 vim.keymap.set("i", "<C-b>", "<Esc><cmd>lua require('spider').motion('b')<CR>i")
+
+-- Copy current file name and line number to clipboard
+vim.keymap.set(
+    "n",
+    "<leader>fl",
+    ":let @+=expand('%') .. ':' .. line('.')<cr>",
+    { desc = "Copy current file name and line number to clipboard" }
+)

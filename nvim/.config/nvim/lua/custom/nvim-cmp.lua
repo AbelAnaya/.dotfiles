@@ -8,7 +8,7 @@ return {
         "hrsh7th/cmp-path", -- source for file system paths
         "hrsh7th/cmp-cmdline", -- source for cmd line
         -- Snippet Engine & its associated nvim-cmp source
-        { "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
+        { "L3MON4D3/LuaSnip" },
         "saadparwaiz1/cmp_luasnip",
         "onsails/lspkind.nvim", -- vs-code like pictograms
 

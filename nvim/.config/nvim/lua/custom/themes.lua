@@ -13,13 +13,34 @@ return {
         priority = 1000,
         opts = {},
         config = function()
-            require("onedarkpro").setup()
+            require("onedarkpro").setup({})
         end,
     },
 
     { "rose-pine/neovim", name = "rose-pine", lazy = false, priority = 1000 },
 
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            require("catppuccin").setup({
+                flavour = "frappe",
+                transparent_background = false,
+                integrations = {
+                    cmp = true,
+                    gitsigns = true,
+                    mason = true,
+                    noice = true,
+                    notify = true,
+                    telescope = true,
+                    mini = true,
+                    lsp_trouble = true,
+                },
+            })
+        end,
+    },
 
     { "rebelot/kanagawa.nvim", lazy = false, priority = 1000 },
 

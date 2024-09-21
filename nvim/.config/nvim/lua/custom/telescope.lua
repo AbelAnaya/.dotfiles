@@ -52,8 +52,6 @@ return {
             pickers = {
                 find_files = {
                     path_display = filenameFirst,
-                    hidden = true,
-                    no_ignore = true,
                 },
                 git_files = {
                     path_display = filenameFirst,
@@ -97,10 +95,16 @@ return {
         end, { desc = "[S]earch [N]eovim files" })
 
         vim.keymap.set("n", "<C-p>", builtin.git_files, { desc = "Search [G]it [F]iles" })
-        vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
+        vim.keymap.set("n", "<leader>sF", function()
+            builtin.find_files({ hidden = true, no_ignore = true })
+        end, { desc = "[S]earch [F]iles including hidden and ignored files" })
+        vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [f]iles" })
         vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
         vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-        vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
+        vim.keymap.set("n", "<leader>sG", function()
+            builtin.live_grep({ additional_args = { "--hidden", "--no-ignore" } })
+        end, { desc = "[S]earch by [G]rep including hidden and ignored files" })
+        vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [g]rep" })
         vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
         vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
         vim.keymap.set("n", "<leader>st", builtin.builtin, { desc = "[S]earch selecting [T]elescope builtin" })
