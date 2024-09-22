@@ -5,6 +5,7 @@ return {
         { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
         { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
     },
+    build = "make tiktoken", -- Only on MacOS or Linux
     config = function()
         local chat = require("CopilotChat")
         local actions = require("CopilotChat.actions")
@@ -51,7 +52,11 @@ return {
                 },
                 Fix = {
                     mapping = "<leader>af",
-                    description = "[A]I [F]ix",
+                    description = "[A]I [f]ix",
+                },
+                FixDiagnostic = {
+                    mapping = "<leader>aF",
+                    description = "[A]I [F]ix Diagnostic",
                 },
                 Optimize = {
                     mapping = "<leader>ao",
