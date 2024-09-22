@@ -28,6 +28,9 @@ return {
             messages = {
                 enabled = false,
             },
+            popupmenu = {
+                enabled = false,
+            },
             -- you can enable a preset for easier configuration
             presets = {
                 bottom_search = false, -- use a classic bottom cmdline for search
