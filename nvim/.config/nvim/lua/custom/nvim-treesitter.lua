@@ -10,6 +10,14 @@ return {
     build = ":TSUpdate",
     config = function()
         local treesitter = require("nvim-treesitter.configs")
+        local treesitter_context = require("treesitter-context")
+
+        treesitter_context.setup({
+            enable = true,
+            max_lines = 0, -- No limit, change if needed
+            multiline_threshold = 1,
+            separator = "-",
+        })
 
         treesitter.setup({
             -- Add languages to be installed here that you want installed for treesitter
