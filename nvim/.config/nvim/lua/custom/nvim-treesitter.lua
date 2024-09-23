@@ -14,9 +14,10 @@ return {
 
         treesitter_context.setup({
             enable = true,
-            max_lines = 0, -- No limit, change if needed
+            max_lines = 5,
             multiline_threshold = 1,
             separator = "-",
+            trim_scope = "inner",
         })
 
         treesitter.setup({
