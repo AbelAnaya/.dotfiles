@@ -5,7 +5,8 @@ return {
         "nvim-treesitter/nvim-treesitter",
     },
     config = function()
-        require("refactoring").setup({
+        local refactoring = require("refactoring")
+        local ConfigOpts = {
             -- prompt for return type
             prompt_func_return_type = {
                 go = true,
@@ -21,6 +22,11 @@ return {
                 java = true,
             },
             show_success_message = true,
-        })
+        }
+        refactoring.setup(ConfigOpts)
+
+        vim.keymap.set({ "n", "x" }, "<leader>rr", function()
+            refactoring.select_refactor(ConfigOpts)
+        end, { desc = "Refactoring: Select refactor" })
     end,
 }
