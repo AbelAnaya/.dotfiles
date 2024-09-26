@@ -23,3 +23,8 @@
     conflictstyle = diff3
 [diff]
     colorMoved = default
+[pager]
+    blame  = delta
+    diff   = delta
+    reflog = delta
+    show   = delta
