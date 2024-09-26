@@ -15,7 +15,7 @@ vim.opt.showmode = false
 vim.opt.breakindent = true
 
 -- Disable wrapping
-vim.opt.wrap = false
+vim.opt.wrap = true
 
 -- Set relative number
 vim.opt.nu = true
