@@ -13,7 +13,20 @@ return {
         priority = 1000,
         opts = {},
         config = function()
-            require("onedarkpro").setup({})
+            require("onedarkpro").setup({
+                colors = {
+                    cursorline = "require('onedarkpro.helpers').darken('gray', 17, 'onedark_vivid')",
+                    color_column = "require('onedarkpro.helpers').darken('gray', 17, 'onedark_vivid')",
+                },
+                options = {
+                    cursorline = true,
+                    lualine_transparency = true,
+                    highlight_inactive_windows = true,
+                },
+                highlights = {
+                    NonText = { bg = "NONE", fg = "gray" },
+                },
+            })
         end,
     },
 
@@ -55,11 +68,5 @@ return {
         lazy = false,
         priority = 1000,
         opts = {},
-    },
-
-    {
-        -- Theme inspired by Atom
-        "navarasu/onedark.nvim",
-        priority = 1000,
     },
 }
