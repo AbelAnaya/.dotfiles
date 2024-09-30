@@ -7,6 +7,7 @@ VIM="nvim"
 alias ll='ls -lAFhrt'
 alias li='ls -lAFhrti'
 alias l='ls -lAFhrtn'
+alias v='nvim'
 
 # Source Cargo env if it exists
 [[ -f $HOME/.cargo/env ]] && source $HOME/.cargo/env
