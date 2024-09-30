@@ -15,8 +15,8 @@ return {
         config = function()
             require("onedarkpro").setup({
                 colors = {
-                    cursorline = "require('onedarkpro.helpers').darken('gray', 17, 'onedark_vivid')",
-                    color_column = "require('onedarkpro.helpers').darken('gray', 17, 'onedark_vivid')",
+                    cursorline = "require('onedarkpro.helpers').darken('gray', 18, 'onedark_vivid')",
+                    color_column = "require('onedarkpro.helpers').darken('gray', 18, 'onedark_vivid')",
                 },
                 options = {
                     cursorline = true,
