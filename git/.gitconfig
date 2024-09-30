@@ -15,13 +15,16 @@
 [include]
     path = ~/.dotfiles/git/themes.gitconfig
 [delta]
-    features = calochortus-lyallii
+    features = arctic-fox
     navigate = true
     line-numbers = true
     hyperlinks = true
+[delta "interactive"]
+    features = arctic-fox
 [merge]
     conflictstyle = diff3
 [diff]
+    submodule = log
     colorMoved = default
 [pager]
     blame  = delta
