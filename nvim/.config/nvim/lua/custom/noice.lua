@@ -29,7 +29,6 @@ return {
                     filter = false,
                     lua = false,
                     help = false,
-                    input = false,
                     -- lua = false, -- to disable a format, set to `false`
                 },
                 view = "cmdline",
