@@ -31,6 +31,9 @@ export PATH=$PATH:$HOME/.local/bin:$HOME/.local/scripts
 # Bind Tmux sessionizer to Ctrl-f when out of tmux
 bindkey -s ^f "$HOME/.local/scripts/tmux-sessionizer.sh\n"
 
+# Enable natural scrolling
+xinput set-prop "ELAN06FA:00 04F3:31AD Touchpad" "libinput Natural Scrolling Enabled" 1
+
 # Functions
 eval "$(gh copilot alias -- zsh)"
 
