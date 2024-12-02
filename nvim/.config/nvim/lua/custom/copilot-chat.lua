@@ -18,6 +18,7 @@ return {
         end
 
         chat.setup({
+            model = "claude-3.5-sonnet",
             question_header = "",
             answer_header = "",
             error_header = "",
