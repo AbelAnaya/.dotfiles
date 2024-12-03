@@ -62,10 +62,6 @@ exec_always --no-startup-id autotiling
 # keybinding to lock screen
 bindsym $mod+Shift+x exec gnome-screensaver-command -l
 
-# Audio Daemons
-exec systemctl --user enable pulseaudio
-exec systemctl --user start pulseaudio
-
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
