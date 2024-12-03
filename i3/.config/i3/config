@@ -235,6 +235,12 @@ gaps outer 0
 # CUSTOM KEYS START
 # ------------------------------------------
 
+# Move Window 1 to HDMI-0
+workspace 1 output HDMI-0
+
+# Start browser on startup
+exec zen
+
 # Open specific applications in floating (+ sticky) mode
 for_window [class = "Gpick"] floating enable
 for_window [class = "matplotlib"] floating enable
@@ -244,6 +250,7 @@ for_window [class = "Nitrogen"] floating enable, resize set 740 512, move positi
 for_window [class = "Gnome-calendar"] floating enable, resize set 810 600, move position center
 
 # Move certain apps to specific workspaces
+for_window [class = "zen"] move window to workspace number 1
 for_window [class = "Nautilus"] move window to workspace number 3
 for_window [class = "discord"] move window to workspace number 4
 for_window [class = "libreoffice"] move window to workspace number 5
