@@ -35,7 +35,7 @@ exec --no-startup-id gnome-screensaver
 exec --no-startup-id xss-lock --transfer-sleep-lock -- gnome-screensaver-command -l
 
 # Use two screens and increase zoom of windows in laptop screen
-exec --no-startup-id xrandr --output HDMI-0 --auto --left-of DP-4 --mode 1920x1080 --output DP-4 --scale 0.75x0.75
+exec --no-startup-id xrandr --output HDMI-1 --auto --left-of eDP-1 --mode 1920x1080 --output eDP-1 --scale 0.75x0.75
 
 # Set screen saver after 320 seconds
 exec_always xset s 320
@@ -235,8 +235,8 @@ gaps outer 0
 # CUSTOM KEYS START
 # ------------------------------------------
 
-# Move Window 1 to HDMI-0
-workspace 1 output HDMI-0
+# Move Window 1 to HDMI-1
+workspace 1 output HDMI-1
 
 # Start browser on startup
 exec zen
