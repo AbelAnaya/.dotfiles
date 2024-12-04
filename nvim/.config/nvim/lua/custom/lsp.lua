@@ -120,11 +120,11 @@ return {
             end, "[W]orkspace [L]ist Folders")
 
             -- Create a command `:Format` local to the LSP buffer
-            vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
+            vim.api.nvim_buf_create_user_command(bufnr, "LspFormat", function(_)
                 vim.lsp.buf.format()
             end, { desc = "Format current buffer with LSP" })
 
-            nmap("<leader>fb", ":Format<CR>", "[F]ormat [B]uffer")
+            nmap("<leader>fb", ":Format<CR>", "[F]ormat [B]uffer using LSP")
 
             -- The following two autocommands are used to highlight references of the
             -- word under your cursor when your cursor rests there for a little while.
