@@ -5,6 +5,10 @@ return {
     version = false, -- set this if you want to always pull the latest change
     opts = {
         provider = "copilot",
+        -- Should work but currently doesn't
+        -- copilot = {
+        --     model = "claude-3.5-sonnet",
+        -- },
         mappings = {
             ask = "<leader>aa",
             edit = "<leader>ak",
