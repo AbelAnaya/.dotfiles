@@ -35,6 +35,7 @@ return {
         })
 
         mason_tool_installer.setup({
+            -- Add only tools you want installed system wide and not per project
             ensure_installed = {
                 "bashls",
                 "clangd",
@@ -51,7 +52,6 @@ return {
                 "black", -- python formatter
                 "mypy", -- python linter
                 "tailwindcss",
-                "ts-standard",
                 "tsserver",
                 "rust_analyzer",
                 "stylua", -- lua formatter
@@ -124,7 +124,7 @@ return {
                 vim.lsp.buf.format()
             end, { desc = "Format current buffer with LSP" })
 
-            nmap("<leader>fb", ":Format<CR>", "[F]ormat [B]uffer using LSP")
+            nmap("<leader>fb", ":LspFormat<CR>", "[F]ormat [B]uffer using LSP")
 
             -- The following two autocommands are used to highlight references of the
             -- word under your cursor when your cursor rests there for a little while.
