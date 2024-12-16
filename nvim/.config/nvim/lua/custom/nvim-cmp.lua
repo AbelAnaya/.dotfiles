@@ -8,7 +8,7 @@ return {
         "hrsh7th/cmp-path", -- source for file system paths
         "hrsh7th/cmp-cmdline", -- source for cmd line
         -- Snippet Engine & its associated nvim-cmp source
-        { "L3MON4D3/LuaSnip" },
+        "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         "onsails/lspkind.nvim", -- vs-code like pictograms
 
@@ -78,7 +78,6 @@ return {
                 { name = "luasnip" }, -- snippets
                 { name = "buffer" }, -- text within current buffer
                 { name = "path" }, -- file system paths
-                { name = "cmdline" }, -- command line
             }, {
                 { name = "buffer" },
             }),
@@ -91,6 +90,10 @@ return {
                     item = lspkind.cmp_format({
                         menu = {
                             nvim_lsp = "[LSP]",
+                            luasnip = "[Snip]",
+                            buffer = "[Buf]",
+                            path = "[Path]",
+                            cmdline = "[Cmd]",
                         },
                         mode = "symbol_text",
                         maxwidth = 50,
@@ -106,6 +109,25 @@ return {
 
                 expandable_indicator = true,
             },
+        })
+
+        -- `/` cmdline setup.
+        cmp.setup.cmdline("/", {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = {
+                { name = "buffer" },
+            },
+        })
+
+        -- `:` cmdline setup.
+        cmp.setup.cmdline(":", {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = cmp.config.sources({
+                { name = "path" },
+            }, {
+                { name = "cmdline" },
+            }),
+            matching = { disallow_symbol_nonprefix_matching = false },
         })
     end,
 }
