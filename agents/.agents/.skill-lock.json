@@ -305,6 +305,25 @@
       "skillFolderHash": "dcc584ff84c4f040ea12742fcb46b7c3ad7070bd",
       "installedAt": "2026-08-17T15:24:17.277Z",
       "updatedAt": "2026-08-17T15:24:17.277Z"
+    },
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/anthropics/skills.git",
+      "skillPath": "skills/frontend-design/SKILL.md",
+      "skillFolderHash": "0d5b74a14bdf3ebcd64f352d06376a2ef05ed296",
+      "pluginName": "example-skills",
+      "installedAt": "2026-09-01T20:08:39.767Z",
+      "updatedAt": "2026-09-01T20:08:39.767Z"
+    },
+    "design-taste-frontend": {
+      "source": "Leonxlnx/taste-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Leonxlnx/taste-skill.git",
+      "skillPath": "skills/taste-skill/SKILL.md",
+      "skillFolderHash": "a6d128e53b4ec0238baee751dde33bf707adb5ec",
+      "installedAt": "2026-09-01T20:13:21.046Z",
+      "updatedAt": "2026-09-01T20:13:21.046Z"
     }
   },
   "dismissed": {
